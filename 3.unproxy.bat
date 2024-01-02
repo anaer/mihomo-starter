@@ -8,3 +8,5 @@ rem 禁用 IE 代理
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyEnable /t REG_DWORD /d 0 /f
 
 echo Proxy has been disabled.
+
+ping 127.0.0.1 -n 3 > nul

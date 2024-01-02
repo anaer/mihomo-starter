@@ -13,4 +13,4 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v Pr
 
 echo Proxy has been set to http://127.0.0.1:7890.
 
-@pause
+ping 127.0.0.1 -n 3 > nul
