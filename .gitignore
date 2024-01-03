@@ -1,4 +1,6 @@
-.vscode/
-clash.yaml
-Country.mmdb
 *.exe
+.vscode/
+Country.mmdb
+clash.yaml
+geoip.dat
+geosite.dat
