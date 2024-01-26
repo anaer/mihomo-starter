@@ -1,0 +1,1 @@
+./mihomo-darwin-amd64 -f clash.yaml -d .
