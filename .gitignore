@@ -1,4 +1,5 @@
 *.exe
+*.zip
 .vscode/
 Country.mmdb
 clash.yaml
