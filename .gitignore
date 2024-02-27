@@ -1,9 +1,10 @@
+*.aria2
 *.exe
 *.zip
 .vscode/
 Country.mmdb
+cache.db
 clash.yaml
 geoip.dat
 geosite.dat
-cache.db
 mihomo-darwin-amd64
