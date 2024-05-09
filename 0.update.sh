@@ -1,3 +1,4 @@
+rm clash.yaml
 # clash.yaml https://github.com/anaer/Sub/blob/main/clash.yaml
 aria2c -d . --check-certificate=false --max-connection-per-server=5 --max-concurrent-downloads=10 --split=100 --min-split-size=1M --continue=true --optimize-concurrent-downloads=true --connect-timeout=10 --timeout=10 --lowest-speed-limit=1K --allow-overwrite=true  https://ghproxy.net/https://raw.githubusercontent.com/anaer/Sub/main/clash.yaml https://jsdelivr.b-cdn.net/gh/anaer/Sub@main/clash.yaml https://gcore.jsdelivr.net/gh/anaer/Sub@main/clash.yaml https://jsd.onmicrosoft.cn/gh/anaer/Sub@main/clash.yaml https://jsd.cdn.zzko.cn/gh/anaer/Sub@main/clash.yaml https://raw.cachefly.998111.xyz/anaer/Sub/main/clash.yaml
 
