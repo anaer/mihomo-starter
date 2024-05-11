@@ -1,1 +1,1 @@
-mihomo-windows-amd64.exe -f clash.yaml -d .
+mihomo-windows-amd64.exe -f mihomo.yaml -d .

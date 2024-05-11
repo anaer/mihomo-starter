@@ -1,1 +1,1 @@
-./mihomo-darwin-amd64 -f clash.yaml -d .
+./mihomo-darwin-amd64 -f mihomo.yaml -d .
