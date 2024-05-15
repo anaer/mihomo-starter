@@ -8,4 +8,12 @@ aria2c -d . --check-certificate=false --max-connection-per-server=5 --max-concur
 @REM mihomo-windows-amd64-v1.18.2.zip https://github.com/MetaCubeX/mihomo/releases
 @REM aria2c -d . --check-certificate=false --max-connection-per-server=5 --max-concurrent-downloads=10 --split=100 --min-split-size=1M --continue=true --optimize-concurrent-downloads=true --connect-timeout=10 --timeout=10 --lowest-speed-limit=1K --allow-overwrite=true  https://gh.mzec.top/https://github.com/MetaCubeX/mihomo/releases/download/v1.18.2/mihomo-windows-amd64-v1.18.2.zip https://gh.mixyun.cyou/https://github.com/MetaCubeX/mihomo/releases/download/v1.18.2/mihomo-windows-amd64-v1.18.2.zip https://git.domob.org/https://github.com/MetaCubeX/mihomo/releases/download/v1.18.2/mihomo-windows-amd64-v1.18.2.zip https://ghproxy.053000.xyz/https://github.com/MetaCubeX/mihomo/releases/download/v1.18.2/mihomo-windows-amd64-v1.18.2.zip https://gh.nxnow.top/https://github.com/MetaCubeX/mihomo/releases/download/v1.18.2/mihomo-windows-amd64-v1.18.2.zip https://git.814560.xyz/https://github.com/MetaCubeX/mihomo/releases/download/v1.18.2/mihomo-windows-amd64-v1.18.2.zip https://dl.ghpig.top/https://github.com/MetaCubeX/mihomo/releases/download/v1.18.2/mihomo-windows-amd64-v1.18.2.zip https://ghproxy.liuzhicong.com/https://github.com/MetaCubeX/mihomo/releases/download/v1.18.2/mihomo-windows-amd64-v1.18.2.zip https://gh.ddlc.top/https://github.com/MetaCubeX/mihomo/releases/download/v1.18.2/mihomo-windows-amd64-v1.18.2.zip https://kkgithub.com/MetaCubeX/mihomo/releases/download/v1.18.2/mihomo-windows-amd64-v1.18.2.zip
 
+netstat -aon | findstr "9090" > nul
+if %errorlevel% equ 0 (
+curl "http://127.0.0.1:9090/configs?force=true" ^
+  -X "PUT" ^
+  -H "Content-Type: application/json" ^
+  --data-raw ^"^{^\^"path^\^": ^\^"^\^", ^\^"payload^\^": ^\^"^\^"^}^"
+)
+
 ping 127.0.0.1 -n 3 > nul
