@@ -14,6 +14,8 @@ curl "http://127.0.0.1:9090/configs?force=true" ^
   -X "PUT" ^
   -H "Content-Type: application/json" ^
   --data-raw ^"^{^\^"path^\^": ^\^"^\^", ^\^"payload^\^": ^\^"^\^"^}^"
+
+  echo "UPDATE CONFIG SUCCESS"
 )
 
 ping 127.0.0.1 -n 3 > nul
