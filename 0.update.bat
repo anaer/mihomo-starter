@@ -14,8 +14,11 @@ curl "http://127.0.0.1:9090/configs?force=true" ^
 
   echo "UPDATE CONFIG SUCCESS"
 
+  if not exist "ui" (
+  echo "ui directory not exist, trigger upgrade ui"
   curl "http://127.0.0.1:9090/upgrade/ui" ^
    -X "POST"
+  )
 )
 
 ping 127.0.0.1 -n 3 > nul
