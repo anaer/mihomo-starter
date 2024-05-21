@@ -21,4 +21,4 @@ curl "http://127.0.0.1:9090/configs?force=true" ^
   )
 )
 
-ping 127.0.0.1 -n 3 > nul
+timeout /t 3
