@@ -14,13 +14,14 @@ if [ $? -eq 0 ]; then
     # Update config
     curl -X PUT "http://127.0.0.1:9090/configs?force=true" \
          -H "Content-Type: application/json" \
+         -H "Authorization: Bearer 666999" \
          -d '{"path":"","payload":""}'
     echo "UPDATE CONFIG SUCCESS"
 
     # Check if the 'ui' directory exists
     if [ ! -d "ui" ]; then
         echo "ui directory not exist, triggering upgrade ui"
-        curl -X POST "http://127.0.0.1:9090/upgrade/ui"
+        curl -X POST "http://127.0.0.1:9090/upgrade/ui" -H "Authorization: Bearer 666999" 
     fi
 fi
 
