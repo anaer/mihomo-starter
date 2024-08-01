@@ -9,3 +9,19 @@
 | 3.unproxy.bat   | 取消系统代理                                     |
 | 4.geo.bat       | 解包 geosite.dat, geoip.dat 到目录中, 便于查询   |
 | 5.stop.bat      | 停止 mihomo, 对应 1.start.vbs                    |
+
+
+## 服务
+
+[winsw服务管理](https://github.com/winsw/winsw)
+
+```sh
+# 安装服务
+mihomo-server.exe install mihomo-server.xml
+# 卸载服务
+mihomo-server.exe uninstall mihomo-server.xml
+# 启动服务
+mihomo-server.exe start mihomo-server.xml
+# 停止服务
+mihomo-server.exe stop mihomo-server.xml
+```

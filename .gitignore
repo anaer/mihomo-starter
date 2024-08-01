@@ -1,6 +1,8 @@
 *.aria2
 *.exe
 *.zip
+*.log
+*.old
 .vscode/
 Country.mmdb
 cache.db
@@ -13,3 +15,4 @@ geoip/
 geosite/
 providers/
 proxies/
+logs/

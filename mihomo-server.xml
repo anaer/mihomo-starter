@@ -1,0 +1,12 @@
+<service>
+  <id>Mihomo</id>
+  <name>Mihomo</name>
+  <description>Mihomo服务</description>
+  <env name="MIHOMO_HOME" value="%BASE%"/>
+  <executable>mihomo-windows-amd64.exe</executable>
+  <arguments>-f "%BASE%\mihomo.yaml" -d "%BASE%"</arguments>
+  <logpath>%BASE%\logs</logpath>
+  <log mode="roll-by-time">
+    <pattern>yyyyMMdd</pattern>
+  </log>
+</service>
