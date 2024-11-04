@@ -14,6 +14,7 @@
 ## 服务
 
 [winsw服务管理](https://github.com/winsw/winsw)
+[日志设置](https://github.com/winsw/winsw/blob/v3/docs/logging-and-error-reporting.md)
 
 ```sh
 # 安装服务

@@ -6,7 +6,8 @@
   <executable>mihomo-windows-amd64.exe</executable>
   <arguments>-f "%BASE%\mihomo.yaml" -d "%BASE%"</arguments>
   <logpath>%BASE%\logs</logpath>
-  <log mode="roll-by-time">
-    <pattern>yyyyMMdd</pattern>
+  <log mode="roll-by-size">
+    <sizeThreshold>10240</sizeThreshold>
+    <keepFiles>8</keepFiles>
   </log>
 </service>
