@@ -8,6 +8,6 @@
   <logpath>%BASE%\logs</logpath>
   <log mode="roll-by-size">
     <sizeThreshold>10240</sizeThreshold>
-    <keepFiles>8</keepFiles>
+    <keepFiles>3</keepFiles>
   </log>
 </service>
