@@ -29,4 +29,4 @@ curl "http://127.0.0.1:9090/configs?force=true" ^
   )
 )
 
-timeout /t 3
+pause
