@@ -8,5 +8,3 @@ curl "http://127.0.0.1:9090/configs?force=true" ^
 
   echo "UPDATE CONFIG SUCCESS"
 )
-
-pause
