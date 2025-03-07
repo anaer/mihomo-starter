@@ -6,7 +6,7 @@ proxy-providers:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 3600
-    url: https://ghproxy.cfd/https://raw.githubusercontent.com/anaer/mihomo-starter/main/clash.yaml
+    url: https://ghproxy.cfd/https://raw.githubusercontent.com/anaer/Sub/main/clash.yaml
     path: ./proxies/SUB1.yaml
 mixed-port: 7890
 mode: rule
@@ -276,27 +276,6 @@ proxy-groups:
   - PROXY
   - LOAD-BALANCE
   - DIRECT
-rules:
-- AND,((NETWORK,UDP),(DST-PORT,443),(NOT,((GEOIP,CN)))),REJECT
-- RULE-SET,reject,REJECT
-- RULE-SET,direct,DIRECT
-- RULE-SET,applications,DIRECT
-- RULE-SET,icloud,DIRECT
-- RULE-SET,apple,DIRECT
-- RULE-SET,lancidr,DIRECT
-- RULE-SET,cncidr,DIRECT
-- RULE-SET,github,GITHUB
-- RULE-SET,google,FALLBACK
-- RULE-SET,openai,PROXY
-- RULE-SET,youtube,PROXY
-- RULE-SET,proxy,PROXY
-- RULE-SET,netflix,PROXY
-- RULE-SET,telegram,PROXY
-- RULE-SET,spotify,PROXY
-- RULE-SET,gfw,PROXY
-- GEOIP,LAN,DIRECT,no-resolve
-- GEOIP,CN,DIRECT
-- MATCH,FINAL
 rule-providers:
   icloud:
     type: file
@@ -378,3 +357,24 @@ rule-providers:
     behavior: ipcidr
     url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/ipcidr/lancidr.yaml
     path: ./rules/ipcidr/lancidr.yaml
+rules:
+- AND,((NETWORK,UDP),(DST-PORT,443),(NOT,((GEOIP,CN)))),REJECT
+- RULE-SET,reject,REJECT
+- RULE-SET,direct,DIRECT
+- RULE-SET,applications,DIRECT
+- RULE-SET,icloud,DIRECT
+- RULE-SET,apple,DIRECT
+- RULE-SET,lancidr,DIRECT
+- RULE-SET,cncidr,DIRECT
+- RULE-SET,github,GITHUB
+- RULE-SET,google,FALLBACK
+- RULE-SET,openai,PROXY
+- RULE-SET,youtube,PROXY
+- RULE-SET,proxy,PROXY
+- RULE-SET,netflix,PROXY
+- RULE-SET,telegram,PROXY
+- RULE-SET,spotify,PROXY
+- RULE-SET,gfw,PROXY
+- GEOIP,LAN,DIRECT,no-resolve
+- GEOIP,CN,DIRECT
+- MATCH,FINAL
