@@ -4,7 +4,6 @@ Country.mmdb
 geoip.dat
 geosite.dat
 cache.db
-mihomo.yaml
 mihomo-darwin-amd64*
 geoip/
 geosite/

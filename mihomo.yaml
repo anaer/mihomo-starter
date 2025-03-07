@@ -1,0 +1,380 @@
+proxy-providers:
+  SUB1:
+    type: http
+    interval: 14400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 3600
+    url: https://ghproxy.cfd/https://raw.githubusercontent.com/anaer/mihomo-starter/main/clash.yaml
+    path: ./proxies/SUB1.yaml
+mixed-port: 7890
+mode: rule
+log-level: warning
+allow-lan: true
+bind-address: '*'
+ipv6: true
+udp: false
+unified-delay: true
+tcp-concurrent: true
+find-process-mode: strict
+global-client-fingerprint: random
+external-controller: 0.0.0.0:9090
+external-ui: ui
+external-ui-url: https://ghproxy.cfd/https://github.com/anaer/yacd/archive/refs/heads/gh-pages.zip
+secret: '666999'
+geodata-mode: true
+geodata-loader: standard
+geo-auto-update: true
+geo-update-interval: 24
+geox-url:
+  geoip: https://ghproxy.cfd/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geoip.dat
+  geosite: https://ghproxy.cfd/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geosite.dat
+keep-alive-interval: 600
+profile:
+  store-selected: true
+  store-fake-ip: true
+ntp:
+  enable: false
+  write-to-system: true
+  server: time.apple.com
+  port: 123
+  interval: 30
+sniffer:
+  enable: true
+  parse-pure-ip: false
+  override-destination: true
+  sniff:
+    HTTP:
+      ports:
+      - 80
+      - 8080-8800
+      override-destination: true
+    TLS:
+      ports:
+      - 443
+      - 8443
+    QUIC:
+      ports:
+      - 443
+      - 8443
+  skip-domain:
+  - Mijia Cloud
+  - dlg.io.mi.com
+  - +.apple.com
+  - +.linux.do
+tun:
+  enable: true
+  stack: gVisor
+  dns-hijack:
+  - any:53
+  auto-route: true
+  auto-detect-interface: true
+  strict-route: true
+  endpoint-independent-nat: false
+hosts:
+  doh.pub:
+  - 1.12.12.12
+  - 120.53.53.53
+  dns.alidns.com:
+  - 223.5.5.5
+  - 223.6.6.6
+  - 2400:3200::1
+  - 2400:3200:baba::1
+  baidu.com: google.com
+dns:
+  enable: true
+  use-hosts: true
+  use-system-hosts: true
+  listen: 0.0.0.0:53
+  ipv6: true
+  ipv6-timeout: 300
+  prefer-h3: true
+  cache-algorithm: arc
+  enhanced-mode: fake-ip
+  respect-rules: false
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter-mode: blacklist
+  fake-ip-filter:
+  - geosite:private
+  - geosite:cn
+  - rule-set:direct
+  - '*.lan'
+  - '*.local'
+  - '*.localhost'
+  - '*.localdomain'
+  - '*.example'
+  - '*.ntp.org.cn'
+  - '*.time.edu.cn'
+  - +.pool.ntp.org
+  - ntp.*.com
+  - time.*.com
+  - time.*.gov
+  - +.qq.com
+  - +.tencent.com
+  - +.wechat.com
+  - +.weixin.qq.com
+  - localhost.ptlogin2.qq.com
+  - localhost.sec.qq.com
+  - localhost.work.weixin.qq.com
+  - '*.microsoftonline.com'
+  - '*.msftconnecttest.com'
+  - '*.msftncsi.com'
+  - +.msftncsi.com
+  - +.steamcontent.com
+  - time.windows.com
+  - +.stun.*.*
+  - +.stun.*.*.*
+  - +.stun.*.*.*.*
+  - +.stun.*.*.*.*.*
+  - stun.*.*
+  - stun.*.*.*
+  - mesu.apple.com
+  - swcdn.apple.com
+  - swdist.apple.com
+  - swdownload.apple.com
+  - swquery.apple.com
+  - swscan.apple.com
+  - Mijia Cloud
+  - +.cmpassport.com
+  - +.logon.battle.net
+  - +.logon.battlenet.com.cn
+  - +.pingan.com.cn
+  nameserver:
+  - https://dns.alidns.com/dns-query#h3=true
+  - https://doh.pub/dns-query
+  nameserver-policy:
+    geosite:category-ads-all: rcode://success
+    geosite:cn,private:
+    - https://doh.pub/dns-query#ecs=223.6.6.6/24&ecs-override=true
+    geolocation-!cn:
+    - https://dns.google/dns-query
+  fallback:
+  - https://dns.alidns.com/dns-query#h3=true
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+    - 240.0.0.0/4
+    - 0.0.0.0/32
+    domain:
+    - +.ai.com
+    - +.algolia.net
+    - +.anthropic.com
+    - +.argotunnel.com
+    - +.arkoselabs.com
+    - +.auth0.com
+    - +.azure.com
+    - +.azureedge.net
+    - +.bing.com
+    - +.bingapis.com
+    - +.bugsnag.com
+    - +.chatgpt.com
+    - +.claude.ai
+    - +.cloudflare.net
+    - +.cloudflareinsights.com
+    - +.cohere.ai
+    - +.docker.com
+    - +.docker.io
+    - +.facebook.com
+    - +.github.com
+    - +.githubusercontent.com
+    - +.google
+    - +.google.com
+    - +.google.dev
+    - +.googleapis.cn
+    - +.googlevideo.com
+    - +.identrust.com
+    - +.instagram.com
+    - +.intercom.io
+    - +.live.com
+    - +.livekit.cloud
+    - +.meta.ai
+    - +.microsoft.com
+    - +.microsoftapp.net
+    - +.minecraft.net
+    - +.msn.com
+    - +.openai.com
+    - +.poe.com
+    - +.segment.com
+    - +.segment.io
+    - +.sentry.io
+    - +.synn.cc
+    - +.stripe.com
+    - +.t.me
+    - +.tailscale.com
+    - +.tailscale.io
+    - +.twitter.com
+    - +.usefathom.com
+    - +.v2ex.com
+    - +.windows.net
+    - +.wootric.com
+    - +.x.com
+    - +.youtube.com
+proxy-groups:
+- name: PROXY
+  type: select
+  proxies:
+  - LOAD-BALANCE
+  - URL-TEST
+  - FALLBACK
+  - DIRECT
+- name: LOAD-BALANCE
+  type: load-balance
+  strategy: consistent-hashing
+  interval: 0
+  proxies:
+  - L1
+  - L2
+  - L3
+- type: select
+  max-failed-times: 100
+  include-all-providers: true
+  interval: 0
+  name: L1
+- type: select
+  max-failed-times: 100
+  include-all-providers: true
+  interval: 0
+  name: L2
+- type: select
+  max-failed-times: 100
+  include-all-providers: true
+  interval: 0
+  name: L3
+- url: https://www.gstatic.com/generate_204
+  interval: 1800
+  timeout: 5000
+  lazy: false
+  max-failed-times: 30
+  include-all-providers: true
+  type: url-test
+  tolerance: 500
+  name: URL-TEST
+- url: https://www.gstatic.com/generate_204
+  interval: 1800
+  timeout: 5000
+  lazy: true
+  max-failed-times: 30
+  include-all-providers: true
+  type: fallback
+  name: FALLBACK
+- name: GITHUB
+  type: select
+  proxies:
+  - PROXY
+  - LOAD-BALANCE
+  - DIRECT
+- name: BLOCK
+  type: select
+  proxies:
+  - REJECT
+  - DIRECT
+- name: FINAL
+  type: select
+  proxies:
+  - PROXY
+  - LOAD-BALANCE
+  - DIRECT
+rules:
+- AND,((NETWORK,UDP),(DST-PORT,443),(NOT,((GEOIP,CN)))),REJECT
+- RULE-SET,reject,REJECT
+- RULE-SET,direct,DIRECT
+- RULE-SET,applications,DIRECT
+- RULE-SET,icloud,DIRECT
+- RULE-SET,apple,DIRECT
+- RULE-SET,lancidr,DIRECT
+- RULE-SET,cncidr,DIRECT
+- RULE-SET,github,GITHUB
+- RULE-SET,google,FALLBACK
+- RULE-SET,openai,PROXY
+- RULE-SET,youtube,PROXY
+- RULE-SET,proxy,PROXY
+- RULE-SET,netflix,PROXY
+- RULE-SET,telegram,PROXY
+- RULE-SET,spotify,PROXY
+- RULE-SET,gfw,PROXY
+- GEOIP,LAN,DIRECT,no-resolve
+- GEOIP,CN,DIRECT
+- MATCH,FINAL
+rule-providers:
+  icloud:
+    type: file
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/icloud.yaml
+    path: ./rules/classical/icloud.yaml
+  apple:
+    type: file
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/apple.yaml
+    path: ./rules/classical/apple.yaml
+  youtube:
+    type: file
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/youtube.yaml
+    path: ./rules/classical/youtube.yaml
+  google:
+    type: file
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/google.yaml
+    path: ./rules/classical/google.yaml
+  github:
+    type: file
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/github.yaml
+    path: ./rules/classical/github.yaml
+  openai:
+    type: file
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/openai.yaml
+    path: ./rules/classical/openai.yaml
+  telegram:
+    type: file
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/telegram.yaml
+    path: ./rules/classical/telegram.yaml
+  spotify:
+    type: file
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/spotify.yaml
+    path: ./rules/classical/spotify.yaml
+  netflix:
+    type: file
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/netflix.yaml
+    path: ./rules/classical/netflix.yaml
+  applications:
+    type: file
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/applications.yaml
+    path: ./rules/classical/applications.yaml
+  reject:
+    type: file
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/reject.yaml
+    path: ./rules/classical/reject.yaml
+  proxy:
+    type: file
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/proxy.yaml
+    path: ./rules/classical/proxy.yaml
+  gfw:
+    type: file
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/domain/gfw.yaml
+    path: ./rules/domain/gfw.yaml
+  direct:
+    type: file
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/domain/direct.yaml
+    path: ./rules/domain/direct.yaml
+  cncidr:
+    type: file
+    behavior: ipcidr
+    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/ipcidr/cncidr.yaml
+    path: ./rules/ipcidr/cncidr.yaml
+  lancidr:
+    type: file
+    behavior: ipcidr
+    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/ipcidr/lancidr.yaml
+    path: ./rules/ipcidr/lancidr.yaml
