@@ -13,7 +13,7 @@ mode: rule
 log-level: warning
 allow-lan: true
 bind-address: '*'
-ipv6: true
+ipv6: false
 udp: false
 unified-delay: true
 tcp-concurrent: true
@@ -81,13 +81,17 @@ hosts:
   - 223.6.6.6
   - 2400:3200::1
   - 2400:3200:baba::1
-  baidu.com: google.com
+  linux.do:
+  - 104.18.2.161
+  - 104.18.3.161
+  - 162.159.152.2
+  - 162.159.153.2
 dns:
   enable: true
   use-hosts: true
   use-system-hosts: true
   listen: 0.0.0.0:53
-  ipv6: true
+  ipv6: false
   ipv6-timeout: 300
   prefer-h3: true
   cache-algorithm: arc
