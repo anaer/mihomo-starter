@@ -26,3 +26,7 @@ mihomo-server.exe start mihomo-server.xml
 # 停止服务
 mihomo-server.exe stop mihomo-server.xml
 ```
+
+## 规则来源
+https://github.com/Loyalsoldier/clash-rules
+https://github.com/PolarisYan/Clash-Rules
