@@ -34,6 +34,10 @@ proxy-providers:
     # url: "https://anaer.github.io/Sub/clash.yaml"
     url: "https://ghproxy.cfd/https://raw.githubusercontent.com/anaer/Sub/main/clash.yaml"
     path: ./proxies/SUB1.yaml
+  SUB2:
+    <<: *hp
+    url: "https://bestsub.bestrui.ggff.net/share/bestsub/cdcefaa4-1f0d-462e-ba76-627b344989f2/all.yaml"
+    path: ./proxies/SUB2.yaml
 #endregion 代理源
 
 #region 基础配置
