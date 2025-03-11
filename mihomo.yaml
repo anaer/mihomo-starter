@@ -1,220 +1,328 @@
+#region 配置说明 更新时间: 25.304.957
+# 1. 非配置注释, 统一放到行后, 放在Col 45, 60, 75的位置, 根据内容长度自动调整位置
+#endregion 配置说明
+
+#region 锚点
+hp: &hp {type: http, interval: 14400, health-check: {enable: true, url: 'https://www.gstatic.com/generate_204', interval: 3600}}
+                                            # 14400 = 4 * 3600 4小时
+                                            # 代理组规则定义
+# up: &up {interval: 0, include-all-providers: true}
+up: &up {url: 'https://www.gstatic.com/generate_204', interval: 1800, timeout: 5000, lazy: true, max-failed-times: 30, include-all-providers: true}
+                                            # 代理组使用
+                                            # use: 引入代理集合 例: use: [SUB1]
+                                            # include-all-providers: 引入所有代理集合 会使引入代理集合失效
+                                            # interval: 健康检查间隔，如不为 0 则启用定时测试，单位为秒
+                                            # timeout: 健康检查超时时间，单位为毫秒
+                                            # lazy: 懒惰状态，默认为true,未选择到当前策略组时，不进行测试
+                                            # max-failed-times: 最大失败次数，超过则触发一次强制健康检查，默认 5
+ut: &ut {type: url-test, tolerance: 500, lazy: false, <<: *up}
+                                            # 自动测试
+                                            # tolerance: 容差值：节点差值低于设定值时，不自动切换, 单位为毫秒
+fb: &fb {type: fallback, <<: *up}
+                                            # 自动回退
+ls: &ls {type: select, max-failed-times: 100, include-all-providers: true, interval: 0}
+                                            # 负载均衡 子项选择
+# rp: &rp {type: http, interval: 86400, proxy: DIRECT}
+rp: &rp {type: file}                        # rule-provider 指定http还是file
+#endregion 锚点
+
+#region 代理源
+## override 覆写节点内容；additional-prefix：为节点名称添加固定前缀；additional-suffix：为节点名称添加固定后缀
 proxy-providers:
   SUB1:
-    type: http
-    interval: 14400
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 3600
-    url: https://ghproxy.cfd/https://raw.githubusercontent.com/anaer/Sub/main/clash.yaml
+    <<: *hp
+    # url: "https://anaer.github.io/Sub/clash.yaml"
+    url: "https://ghproxy.cfd/https://raw.githubusercontent.com/anaer/Sub/main/clash.yaml"
     path: ./proxies/SUB1.yaml
-mixed-port: 7890
-mode: rule
-log-level: warning
-allow-lan: true
-bind-address: '*'
-ipv6: false
-udp: false
-unified-delay: true
-tcp-concurrent: true
-find-process-mode: strict
-global-client-fingerprint: random
-external-controller: 0.0.0.0:9090
-external-ui: ui
-external-ui-url: https://ghproxy.cfd/https://github.com/anaer/yacd/archive/refs/heads/gh-pages.zip
-secret: '666999'
-geodata-mode: true
-geodata-loader: standard
-geo-auto-update: true
-geo-update-interval: 24
-geox-url:
-  geoip: https://ghproxy.cfd/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geoip.dat
-  geosite: https://ghproxy.cfd/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geosite.dat
-keep-alive-interval: 600
-profile:
-  store-selected: true
-  store-fake-ip: true
-ntp:
+#endregion 代理源
+
+#region 基础配置
+mixed-port: 7890                            # 混合端口 HTTP和SOCKS5使用同一个端口
+
+mode: rule                                  # 规则模式: rule/global/direct/script
+log-level: warning                          # 日志等级: silent/error/warning/info/debug
+
+allow-lan: true                             # 允许局域网的连接 (可用来共享代理)
+bind-address: "*"                           # 绑定IP地址, 仅作用于allow-lan为true, '*' 表示所有地址
+ipv6: false                                 # 开启 IPv6 总开关，关闭阻断所有 IPv6 连接和屏蔽 DNS 请求 AAAA 记录
+udp: false                                  # 是否允许UDP通过代理, 默认为false
+
+unified-delay: true                         # 开启统一延迟时, 会进行两次延迟测试, 以消除链接握手等带来的不同类型节点的延迟差异, 可选值 true/false
+tcp-concurrent: true                        # TCP 并发连接所有IP, 将使用最快握手的TCP
+find-process-mode: strict                   # 匹配进程模式 alaways/strict/off
+                                            # strict: 默认, 由mihomo判断是否开启
+                                            # always: 开启, 强制匹配所有进程
+                                            # off: 不匹配进程, 推荐在路由器上使用此模式
+global-client-fingerprint: random           # 全局TLS指纹, 优先低于proxy内的client-fingerprint
+                                            # 可选：random, chrome, firefox, safari, iOS, android, edge, 360, qq
+
+external-controller: 0.0.0.0:9090           # RESTful API监听地址
+# external-controller-tls: 0.0.0.0:9443     # RESTful API HTTPS监听地址, 需要配置tls部分配置文件
+# external-controller-unix: mihomo.sock     # RESTful API Unix socket 监听地址（ windows版本大于17063也可以使用，即大于等于1803/RS4版本即可使用 ）
+                                            # ！！！注意： 从Unix socket访问api接口不会验证secret， 如果开启请自行保证安全问题 ！！！
+                                            # 测试方法： curl -v --unix-socket "mihomo.sock" http://localhost/
+
+external-ui: ui                             # 配置WEB UI http://{{external-controller}}/ui
+                                            # 执行`curl -X POST http://127.0.0.1:9090/upgrade/ui`进行ui更新
+# external-ui-name: xd
+external-ui-url: "https://ghproxy.cfd/https://github.com/anaer/yacd/archive/refs/heads/gh-pages.zip"
+                                            # 自定义外部用户界面下载地址
+secret: "666999"                            # 自定义API的访问密钥
+
+geodata-mode: true                          # GEOIP 数据模式 true: dat文件, false: mmdb文件
+geodata-loader: standard                    # GEO文件加载模式 standard: 标准加载器, memconservative: 专为内存受限(小内存)设备优化的加载器(默认值)
+geo-auto-update: true                       # 是否自动更新geodata
+geo-update-interval: 24                     # 更新间隔, 单位:小时
+geox-url:                                   # 自定义GEO下载地址
+  geoip: "https://ghproxy.cfd/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geoip.dat"
+  geosite: "https://ghproxy.cfd/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geosite.dat"
+  # mmdb: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/country.mmdb"
+  # asn: "https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb"
+  # geoip: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
+  # geosite: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat"
+# global-ua: 'Mozilla/5.0 (X11; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0'
+                                            # 自定义外部资源下载时使用的的 UA，默认为 clash.meta
+
+# authentication:                           # http,socks入口的验证用户名, 密码
+#   - "username:password"
+# skip-auth-prefixes:
+#   - '127.0.0.1/8'
+#   - '::1/128'
+#   - '192.168.0.0/16'
+# lan-allowed-ips:                          # 允许连接的IP地址段, 仅作用于allow-lan为true, 默认值为0.0.0.0/0 和::/0
+#   - 0.0.0.0/0
+#   - ::/0
+# lan-disallowed-ips:                       # 禁止连接的IP地址段, 黑名单优先级高于白名单, 默认值为空
+#   - 192.168.0.3/32
+
+# tls:
+#   certificate: string                     # 证书 PEM 格式，或者 证书的路径
+#   private-key: string                     # 证书对应的私钥 PEM 格式，或者私钥路径
+#   custom-certifactes:
+#     - |
+#       -----BEGIN CERTIFICATE-----
+#       format/pem...
+#       -----END CERTIFICATE-----
+
+# interface-name: en0                       # 设置出口网卡
+
+# routing-mark: 6666                        # 为Linux下的出站连接提供默认流量标记 仅作用于Linux
+
+keep-alive-interval: 600                    # 缓解移动设备耗电问题 https://github.com/vernesong/OpenClash/issues/2614
+
+
+
+profile:                                    # 在Clash官方中, profile 应为扩展配置, 但在mihomo, 仅作为缓存项使用
+  store-selected: true                      # 储存API对策略组的选择, 以供下次启动时使用
+  store-fake-ip: true                       # 储存fakeip映射表, 域名再次发生连接时, 使用原有映射地址
+
+#endregion 基础配置
+
+#region ntp时间同步
+ntp:                                        # 自动同步时间以防止时间不准导致无法正常联网
   enable: false
-  write-to-system: true
+  write-to-system: true                     # 是否同步至系统时间，需要 root/管理员权限
   server: time.apple.com
   port: 123
   interval: 30
-sniffer:
-  enable: true
-  parse-pure-ip: false
-  override-destination: true
+#endregion ntp时间同步
+
+#region sniffer配置
+sniffer:                                    # 域名嗅探 通过读取握手包内的域名字段,将IP还原成域名,有效解决Mapping机制的短板
+  enable: true                              # 是否启用sniffer
+  # force-dns-mapping: true                 # 对redir-host类型设别的流量进行强制嗅探
+  parse-pure-ip: false                      # 对所有未获取到域名的流量进行强制嗅探
+  override-destination: true                # 是否使用嗅探结果作为实际访问, 默认为true
   sniff:
     HTTP:
-      ports:
-      - 80
-      - 8080-8800
-      override-destination: true
-    TLS:
-      ports:
-      - 443
-      - 8443
+      ports: [80, 8080-8800]
+      override-destination: true            # override-destination字段（可选），用于覆盖全局override-destination设置
+    TLS:                                    # TLS和QUIC默认如果不配置ports, 默认嗅探443
+      ports: [443, 8443]
     QUIC:
-      ports:
-      - 443
-      - 8443
-  skip-domain:
-  - Mijia Cloud
-  - dlg.io.mi.com
-  - +.apple.com
-  - +.linux.do
-tun:
-  enable: true
-  stack: gVisor
-  dns-hijack:
-  - any:53
-  auto-route: true
-  auto-detect-interface: true
-  strict-route: true
-  endpoint-independent-nat: false
-hosts:
-  doh.pub:
-  - 1.12.12.12
-  - 120.53.53.53
-  dns.alidns.com:
-  - 223.5.5.5
-  - 223.6.6.6
-  - 2400:3200::1
-  - 2400:3200:baba::1
-  linux.do:
-  - 104.18.2.161
-  - 104.18.3.161
-  - 162.159.152.2
-  - 162.159.153.2
-dns:
-  enable: true
-  use-hosts: true
-  use-system-hosts: true
-  listen: 0.0.0.0:53
-  ipv6: false
-  ipv6-timeout: 300
-  prefer-h3: true
-  cache-algorithm: arc
-  enhanced-mode: fake-ip
-  respect-rules: false
-  fake-ip-range: 198.18.0.1/16
-  fake-ip-filter-mode: blacklist
-  fake-ip-filter:
-  - geosite:private
-  - geosite:cn
-  - rule-set:direct
-  - '*.lan'
-  - '*.local'
-  - '*.localhost'
-  - '*.localdomain'
-  - '*.example'
-  - '*.ntp.org.cn'
-  - '*.time.edu.cn'
-  - +.pool.ntp.org
-  - ntp.*.com
-  - time.*.com
-  - time.*.gov
-  - +.qq.com
-  - +.tencent.com
-  - +.wechat.com
-  - +.weixin.qq.com
-  - localhost.ptlogin2.qq.com
-  - localhost.sec.qq.com
-  - localhost.work.weixin.qq.com
-  - '*.microsoftonline.com'
-  - '*.msftconnecttest.com'
-  - '*.msftncsi.com'
-  - +.msftncsi.com
-  - +.steamcontent.com
-  - time.windows.com
-  - +.stun.*.*
-  - +.stun.*.*.*
-  - +.stun.*.*.*.*
-  - +.stun.*.*.*.*.*
-  - stun.*.*
-  - stun.*.*.*
-  - mesu.apple.com
-  - swcdn.apple.com
-  - swdist.apple.com
-  - swdownload.apple.com
-  - swquery.apple.com
-  - swscan.apple.com
-  - Mijia Cloud
-  - +.cmpassport.com
-  - +.logon.battle.net
-  - +.logon.battlenet.com.cn
-  - +.pingan.com.cn
-  nameserver:
-  - https://dns.alidns.com/dns-query#h3=true
-  - https://doh.pub/dns-query
-  nameserver-policy:
-    geosite:category-ads-all: rcode://success
-    geosite:cn,private:
-    - https://doh.pub/dns-query#ecs=223.6.6.6/24&ecs-override=true
-    geolocation-!cn:
-    - https://dns.google/dns-query
-  fallback:
-  - https://dns.alidns.com/dns-query#h3=true
-  fallback-filter:
+      ports: [443, 8443]
+  # force-domain:                           # 需要强制嗅探的域名（默认情况下只对IP进行嗅探）
+    # - '+.v2ex.com'
+  skip-domain:                              # 需要跳过嗅探的域名。主要解决部分站点sni字段非域名，导致嗅探结果异常的问题，如米家设备Mijia Cloud
+    - 'Mijia Cloud'                         # 米家设备, 建议加
+    - 'dlg.io.mi.com'
+    - '+.apple.com'                         # 苹果域名, 建议加
+    - '+.linux.do'
+#endregion sniffer配置
+
+#region tun配置
+tun:                                        # Tun配置
+  enable: true                              # 是否启用tun
+  stack: gVisor                             # 可选: System/gVisor/Mixed
+  dns-hijack:                               # dns劫持, 一般设置为 any:53 即可, 即劫持所有53端口的udp流量
+    - "any:53"
+  auto-route: true                          # 自动设置全局路由, 可以自动将全局流量路由进入tun网卡
+  auto-detect-interface: true               # 自动识别出口网卡, 多出口网卡同时连接的设备建议手动指定出口网卡
+  strict-route: true                        # 将所有连接路由到tun来防止泄漏,但你的设备将无法其他设备被访问
+  endpoint-independent-nat: false           # 启用独立于端点的 NAT,性能可能会略有下降,所以不建议在不需要的时候开启
+#endregion tun配置
+
+#region hosts配置
+hosts:                                      # 类似于 /etc/hosts, 仅支持配置单个 IP
+  doh.pub: [1.12.12.12, 120.53.53.53]
+  dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
+  linux.do: [104.18.2.161, 104.18.3.161, 162.159.152.2, 162.159.153.2]
+  gist.github.com: [140.82.112.4]
+#endregion hosts配置
+
+#region dns配置
+dns:                                        # DNS配置
+  enable: true                              # true: 使用clashDNS, false: 使用系统DNS
+  use-hosts: true                           # 是否查询配置中的 hosts,默认 true
+  use-system-hosts: true                    # 是否查询系统 hosts，默认 true
+  listen: 0.0.0.0:53                        # 开启DNS服务器监听 默认: 0.0.0.0:53
+  ipv6: false                                # IPV6解析开关, 如果为false, 将返回ipv6结果为空
+  ipv6-timeout: 300                         # 单位:ms 内部双栈并发时, 向上游查询AAAA时, 等待AAAA的时间, 默认100ms
+  prefer-h3: true                           # 是否开启DoH支持HTTP/3, 将并发尝试
+  cache-algorithm: arc                      # 缓存算法: ARC（Adaptive Replacement Cache）缓存算法
+  enhanced-mode: fake-ip                    # 模式: redir-host或fake-ip (默认使用fake-ip模式)
+  respect-rules: false                      # dns 连接跟随 rules，需配置 proxy-server-nameserver
+  fake-ip-range: 198.18.0.1/16              # fake-ip解析地址池
+  fake-ip-filter-mode: blacklist            # 模式切换 whitelist/blacklist # 黑名单模式表示如果匹配成功则不返回 Fake-IP, 白名单模式时只有匹配成功才返回 Fake-IP
+  fake-ip-filter:                           # 在以下列表的域名将不会被解析为 fake ip，这些域名相关的解析请求将会返回它们真实的 IP 地址
+    # GEOSITE
+    - 'geosite:private'
+    - 'geosite:cn'
+    # RULESET 需要domain类型
+    - 'rule-set:direct'
+    # Local
+    - '*.lan'
+    - '*.local'
+    - '*.localhost'
+    - '*.localdomain'
+    - '*.example'
+    # NTP服务
+    - '*.ntp.org.cn'
+    - '*.time.edu.cn'
+    - '+.pool.ntp.org'
+    - 'ntp.*.com'
+    - 'time.*.com'
+    - 'time.*.gov'
+    # Tencent
+    - '+.qq.com'
+    - '+.tencent.com'
+    - '+.wechat.com'
+    - '+.weixin.qq.com'
+    - 'localhost.ptlogin2.qq.com'
+    - 'localhost.sec.qq.com'
+    - 'localhost.work.weixin.qq.com'
+    # Microsoft Windows Serivice
+    - '*.microsoftonline.com'
+    - '*.msftconnecttest.com'
+    - '*.msftncsi.com'
+    - '+.msftncsi.com'
+    - '+.steamcontent.com'
+    - 'time.windows.com'
+    # STUN
+    - '+.stun.*.*'
+    - '+.stun.*.*.*'
+    - '+.stun.*.*.*.*'
+    - '+.stun.*.*.*.*.*'
+    - 'stun.*.*'
+    - 'stun.*.*.*'
+    # Apple Software Update Service
+    - 'mesu.apple.com'
+    - 'swcdn.apple.com'
+    - 'swdist.apple.com'
+    - 'swdownload.apple.com'
+    - 'swquery.apple.com'
+    - 'swscan.apple.com'
+    # Mijia
+    - 'Mijia Cloud'
+    # 移动
+    - '+.cmpassport.com'
+    # 暴雪战网
+    - '+.logon.battle.net'
+    - '+.logon.battlenet.com.cn'
+    # 平安银行
+    - '+.pingan.com.cn'
+
+  # default-nameserver:                                      # 用于解析其他DNS服务器和节点的域名, 必须为IP, 可为加密DNS。注意这个只用来解析节点和其他的dns，其他网络请求不归他管
+    # - https://223.6.6.6/dns-query
+    # - https://120.53.53.53/dns-query
+    # - system                                             # append DNS server from system configuration. If not found, it would print an error log and skip.
+  nameserver:                                              # 除nameserver-policy指定规则外的所有域名都由nameserver解析, 默认走代理
+    - https://dns.alidns.com/dns-query#h3=true             # 强制 HTTP/3，与 perfer-h3 无关，强制开启 DoH 的 HTTP/3 支持，若不支持将无法使用
+    - https://doh.pub/dns-query                            # 腾讯
+
+  nameserver-policy:                                       # 指定域名查询的解析服务器
+    'geosite:category-ads-all': rcode://success            # 直接返回空解析，用于去广告 mihomo特性 其他内核可能不支持
+    "geosite:cn,private":
+      - https://doh.pub/dns-query#ecs=223.6.6.6/24&ecs-override=true
+    'geolocation-!cn':
+      - https://dns.google/dns-query
+  fallback:                                                # 后备域名解析服务器
+    - https://dns.alidns.com/dns-query#h3=true
+  fallback-filter:                          # 后备域名解析服务器筛选，满足条件的将使用 fallback结果或只使用 fallback解析
     geoip: true
-    geoip-code: CN
-    ipcidr:
-    - 240.0.0.0/4
-    - 0.0.0.0/32
-    domain:
-    - +.ai.com
-    - +.algolia.net
-    - +.anthropic.com
-    - +.argotunnel.com
-    - +.arkoselabs.com
-    - +.auth0.com
-    - +.azure.com
-    - +.azureedge.net
-    - +.bing.com
-    - +.bingapis.com
-    - +.bugsnag.com
-    - +.chatgpt.com
-    - +.claude.ai
-    - +.cloudflare.net
-    - +.cloudflareinsights.com
-    - +.cohere.ai
-    - +.docker.com
-    - +.docker.io
-    - +.facebook.com
-    - +.github.com
-    - +.githubusercontent.com
-    - +.google
-    - +.google.com
-    - +.google.dev
-    - +.googleapis.cn
-    - +.googlevideo.com
-    - +.identrust.com
-    - +.instagram.com
-    - +.intercom.io
-    - +.live.com
-    - +.livekit.cloud
-    - +.meta.ai
-    - +.microsoft.com
-    - +.microsoftapp.net
-    - +.minecraft.net
-    - +.msn.com
-    - +.openai.com
-    - +.poe.com
-    - +.segment.com
-    - +.segment.io
-    - +.sentry.io
-    - +.synn.cc
-    - +.stripe.com
-    - +.t.me
-    - +.tailscale.com
-    - +.tailscale.io
-    - +.twitter.com
-    - +.usefathom.com
-    - +.v2ex.com
-    - +.windows.net
-    - +.wootric.com
-    - +.x.com
-    - +.youtube.com
+    geoip-code: CN                          # 除了配置的国家 IP, 其他的 IP 结果会被视为污染
+    # geosite:                              # 列表的内容被视为已污染, 匹配到 geosite 的域名，将只使用 fallback解析，不去使用 nameserver
+      # - gfw                               # 新版使用nameserver-policy配置代替
+    ipcidr:                                 # 这些网段的结果会被视为污染 nameserver解析出这些结果时将会采用 fallback的解析结果
+      - 240.0.0.0/4
+      - 0.0.0.0/32
+    domain:                                 # 这些域名被视为已污染，匹配到这些域名，会直接使用 fallback解析，不去使用 nameserver
+      - '+.ai.com'
+      - '+.algolia.net'
+      - '+.anthropic.com'
+      - '+.argotunnel.com'
+      - '+.arkoselabs.com'
+      - '+.auth0.com'
+      - '+.azure.com'
+      - '+.azureedge.net'
+      - '+.bing.com'
+      - '+.bingapis.com'
+      - '+.bugsnag.com'
+      - '+.chatgpt.com'
+      - '+.claude.ai'
+      - '+.cloudflare.net'
+      - '+.cloudflareinsights.com'
+      - '+.cohere.ai'
+      - '+.docker.com'
+      - '+.docker.io'
+      - '+.facebook.com'
+      - '+.github.com'
+      - '+.githubusercontent.com'
+      - '+.google'
+      - '+.google.com'
+      - '+.google.dev'
+      - '+.googleapis.cn'
+      - '+.googlevideo.com'
+      - '+.identrust.com'
+      - '+.instagram.com'
+      - '+.intercom.io'
+      - '+.live.com'
+      - '+.livekit.cloud'
+      - '+.meta.ai'
+      - '+.microsoft.com'
+      - '+.microsoftapp.net'
+      - '+.minecraft.net'
+      - '+.msn.com'
+      - '+.openai.com'
+      - '+.poe.com'
+      - '+.segment.com'
+      - '+.segment.io'
+      - '+.sentry.io'
+      - '+.synn.cc'
+      - '+.stripe.com'
+      - '+.t.me'
+      - '+.tailscale.com'
+      - '+.tailscale.io'
+      - '+.twitter.com'
+      - '+.usefathom.com'
+      - '+.v2ex.com'
+      - '+.windows.net'
+      - '+.wootric.com'
+      - '+.x.com'
+      - '+.youtube.com'
+#endregion hosts配置
+
+#region 代理组配置
 proxy-groups:
 - name: PROXY
   type: select
@@ -223,46 +331,26 @@ proxy-groups:
   - URL-TEST
   - FALLBACK
   - DIRECT
-- name: LOAD-BALANCE
+- name: LOAD-BALANCE                        # 负载均衡
   type: load-balance
-  strategy: consistent-hashing
-  interval: 0
+  strategy: consistent-hashing              # 负载均衡策略
+                                            # consistent-hashing 将会把相同顶级域名的请求分配给策略组内的同一个代理节点
+                                            # round-robin 将会把所有的请求分配给策略组内不同的代理节点
+  interval: 0                               # 0 关闭健康检查, 健康检查下放下层检查
   proxies:
-  - L1
-  - L2
-  - L3
-- type: select
-  max-failed-times: 100
-  include-all-providers: true
-  interval: 0
-  name: L1
-- type: select
-  max-failed-times: 100
-  include-all-providers: true
-  interval: 0
-  name: L2
-- type: select
-  max-failed-times: 100
-  include-all-providers: true
-  interval: 0
-  name: L3
-- url: https://www.gstatic.com/generate_204
-  interval: 1800
-  timeout: 5000
-  lazy: false
-  max-failed-times: 30
-  include-all-providers: true
-  type: url-test
-  tolerance: 500
-  name: URL-TEST
-- url: https://www.gstatic.com/generate_204
-  interval: 1800
-  timeout: 5000
-  lazy: true
-  max-failed-times: 30
-  include-all-providers: true
-  type: fallback
-  name: FALLBACK
+    - L1
+    - L2
+    - L3
+- name: L1
+  <<: *ls
+- name: L2
+  <<: *ls
+- name: L3
+  <<: *ls
+- name: URL-TEST                            # 自动测速
+  <<: *ut
+- name: FALLBACK
+  <<: *fb
 - name: GITHUB
   type: select
   proxies:
@@ -272,113 +360,147 @@ proxy-groups:
 - name: BLOCK
   type: select
   proxies:
-  - REJECT
-  - DIRECT
+    - REJECT
+    - DIRECT
 - name: FINAL
   type: select
   proxies:
-  - PROXY
-  - LOAD-BALANCE
-  - DIRECT
+    - PROXY
+    - LOAD-BALANCE
+    - DIRECT
+#endregion 代理组配置
+
+#region 代理规则集
 rule-providers:
+  # classical规则
   icloud:
-    type: file
+    <<: *rp
     behavior: classical
-    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/icloud.yaml
+    # url: "https://anaer.github.io/Sub/rules/classical/icloud.yaml"
+    # url: "https://ghproxy.cfd/https://raw.githubusercontent.com/anaer/Sub/main/rules/classical/icloud.yaml"
+    url: "https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/icloud.yaml"
     path: ./rules/classical/icloud.yaml
+
   apple:
-    type: file
+    <<: *rp
     behavior: classical
-    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/apple.yaml
+    url: "https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/apple.yaml"
     path: ./rules/classical/apple.yaml
+
   youtube:
-    type: file
+    <<: *rp
     behavior: classical
-    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/youtube.yaml
+    url: "https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/youtube.yaml"
     path: ./rules/classical/youtube.yaml
+
   google:
-    type: file
+    <<: *rp
     behavior: classical
-    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/google.yaml
+    url: "https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/google.yaml"
     path: ./rules/classical/google.yaml
+
   github:
-    type: file
+    <<: *rp
     behavior: classical
-    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/github.yaml
+    url: "https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/github.yaml"
     path: ./rules/classical/github.yaml
+
   openai:
-    type: file
+    <<: *rp
     behavior: classical
-    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/openai.yaml
+    url: "https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/openai.yaml"
     path: ./rules/classical/openai.yaml
+
   telegram:
-    type: file
+    <<: *rp
     behavior: classical
-    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/telegram.yaml
+    url: "https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/telegram.yaml"
     path: ./rules/classical/telegram.yaml
+
   spotify:
-    type: file
+    <<: *rp
     behavior: classical
-    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/spotify.yaml
+    url: "https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/spotify.yaml"
     path: ./rules/classical/spotify.yaml
+
   netflix:
-    type: file
+    <<: *rp
     behavior: classical
-    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/netflix.yaml
+    url: "https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/netflix.yaml"
     path: ./rules/classical/netflix.yaml
+
   applications:
-    type: file
+    <<: *rp
     behavior: classical
-    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/applications.yaml
+    url: "https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/applications.yaml"
     path: ./rules/classical/applications.yaml
+
   reject:
-    type: file
+    <<: *rp
     behavior: classical
-    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/reject.yaml
+    url: "https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/reject.yaml"
     path: ./rules/classical/reject.yaml
+
   proxy:
-    type: file
+    <<: *rp
     behavior: classical
-    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/proxy.yaml
+    url: "https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/classical/proxy.yaml"
     path: ./rules/classical/proxy.yaml
+
+  # domain规则
   gfw:
-    type: file
+    <<: *rp
     behavior: domain
-    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/domain/gfw.yaml
+    url: "https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/domain/gfw.yaml"
     path: ./rules/domain/gfw.yaml
+
   direct:
-    type: file
+    <<: *rp
     behavior: domain
-    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/domain/direct.yaml
+    url: "https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/domain/direct.yaml"
     path: ./rules/domain/direct.yaml
+
+  # ipcidr规则
   cncidr:
-    type: file
+    <<: *rp
     behavior: ipcidr
-    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/ipcidr/cncidr.yaml
+    url: "https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/ipcidr/cncidr.yaml"
     path: ./rules/ipcidr/cncidr.yaml
+
   lancidr:
-    type: file
+    <<: *rp
     behavior: ipcidr
-    url: https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/ipcidr/lancidr.yaml
+    url: "https://cdn.jsdelivr.net/gh/anaer/mihomo-starter@main/rules/ipcidr/lancidr.yaml"
     path: ./rules/ipcidr/lancidr.yaml
+#endregion 代理规则集
+
+#region 代理规则
+#MATCH,PROXY  白名单: 没有命中规则的网络流量，统统使用代理
+#MATCH,DIRECT 黑名单: 只有命中规则的网络流量，才使用代理
 rules:
-- AND,((NETWORK,UDP),(DST-PORT,443),(NOT,((GEOIP,CN)))),REJECT
-- RULE-SET,reject,REJECT
-- RULE-SET,direct,DIRECT
-- RULE-SET,applications,DIRECT
-- RULE-SET,icloud,DIRECT
-- RULE-SET,apple,DIRECT
-- RULE-SET,lancidr,DIRECT
-- RULE-SET,cncidr,DIRECT
-- RULE-SET,github,GITHUB
-- RULE-SET,google,FALLBACK
-- RULE-SET,openai,PROXY
-- RULE-SET,youtube,PROXY
-- RULE-SET,proxy,PROXY
-- RULE-SET,netflix,PROXY
-- RULE-SET,telegram,PROXY
-- RULE-SET,spotify,PROXY
-- RULE-SET,gfw,PROXY
-- GEOIP,LAN,DIRECT,no-resolve
-- GEOIP,CN,DIRECT
-- MATCH,FINAL
+  - AND,((NETWORK,UDP),(DST-PORT,443),(NOT,((GEOIP,CN)))),REJECT
+  - RULE-SET,reject,REJECT
+
+  - RULE-SET,direct,DIRECT
+  - RULE-SET,applications,DIRECT
+  - RULE-SET,icloud,DIRECT
+  - RULE-SET,apple,DIRECT
+  - RULE-SET,lancidr,DIRECT
+  - RULE-SET,cncidr,DIRECT
+
+  - RULE-SET,github,GITHUB
+  - RULE-SET,google,FALLBACK
+
+  - RULE-SET,openai,PROXY
+  - RULE-SET,youtube,PROXY
+  - RULE-SET,proxy,PROXY
+  - RULE-SET,netflix,PROXY
+  - RULE-SET,telegram,PROXY
+  - RULE-SET,spotify,PROXY
+  - RULE-SET,gfw,PROXY
+
+  - GEOIP,LAN,DIRECT,no-resolve
+  - GEOIP,CN,DIRECT
+
+  - MATCH,FINAL
+#endregion 代理规则
