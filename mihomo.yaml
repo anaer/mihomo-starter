@@ -20,7 +20,7 @@ ut: &ut {type: url-test, tolerance: 500, lazy: false, <<: *up}
                                             # tolerance: 容差值：节点差值低于设定值时，不自动切换, 单位为毫秒
 fb: &fb {type: fallback, <<: *up}
                                             # 自动回退
-ls: &ls {type: select, max-failed-times: 100, include-all-providers: true, interval: 0}
+ls: &ls {type: fallback, max-failed-times: 100, include-all-providers: true, interval: 0}
                                             # 负载均衡 子项选择
 # rp: &rp {type: http, interval: 86400, proxy: DIRECT}
 rp: &rp {type: file}                        # rule-provider 指定http还是file
@@ -28,16 +28,25 @@ rp: &rp {type: file}                        # rule-provider 指定http还是file
 
 #region 代理源
 ## override 覆写节点内容；additional-prefix：为节点名称添加固定前缀；additional-suffix：为节点名称添加固定后缀
+## path未指定时, 默认在proxies目录生成文件, 以md5(url)作为文件名
 proxy-providers:
-  SUB1:
-    <<: *hp
-    # url: "https://anaer.github.io/Sub/clash.yaml"
-    url: "https://ghproxy.cfd/https://raw.githubusercontent.com/anaer/Sub/main/clash.yaml"
-    path: ./proxies/SUB1.yaml
+  SUB0:
+    type: file
+    path: ./proxies/SUB0.yaml
+  # SUB1:
+  #   <<: *hp
+  #   # url: "https://anaer.github.io/Sub/clash.yaml"
+  #   url: "https://ghproxy.cfd/https://raw.githubusercontent.com/anaer/Sub/main/clash.yaml"
+  #   path: ./proxies/SUB1.yaml
   SUB2:
     <<: *hp
     url: "https://bestsub.bestrui.ggff.net/share/bestsub/cdcefaa4-1f0d-462e-ba76-627b344989f2/all.yaml"
     path: ./proxies/SUB2.yaml
+  SUB3:
+    <<: *hp
+    url: "https://sbgfw.trafficmanager.net/api/v1/client/subscribe?token=04bda8f503d8804ca66f99dd6ee77e93"
+    path: ./proxies/SUB3.yaml
+
 #endregion 代理源
 
 #region 基础配置

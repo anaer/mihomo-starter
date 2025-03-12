@@ -7,7 +7,7 @@ cache.db
 mihomo-darwin-amd64*
 geoip/
 geosite/
-proxies/
+# proxies/
 logs/
 mihomo-windows-amd64-v*.zip
 ASN.mmdb
