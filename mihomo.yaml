@@ -33,19 +33,19 @@ proxy-providers:
   SUB0:
     type: file
     path: ./proxies/SUB0.yaml
-  # SUB1:
-  #   <<: *hp
-  #   # url: "https://anaer.github.io/Sub/clash.yaml"
-  #   url: "https://ghproxy.cfd/https://raw.githubusercontent.com/anaer/Sub/main/clash.yaml"
-  #   path: ./proxies/SUB1.yaml
-  SUB2:
+  SUB1:
     <<: *hp
     url: "https://bestsub.bestrui.ggff.net/share/bestsub/cdcefaa4-1f0d-462e-ba76-627b344989f2/all.yaml"
-    path: ./proxies/SUB2.yaml
-  SUB3:
+    path: ./proxies/SUB1.yaml
+  SUB2:
     <<: *hp
-    url: "https://sbgfw.trafficmanager.net/api/v1/client/subscribe?token=04bda8f503d8804ca66f99dd6ee77e93"
-    path: ./proxies/SUB3.yaml
+    url: "https://udwtlink.top/b71f4e05-99bb-4bc9-9292-3ec4d872835d/clash"
+    path: ./proxies/SUB2.yaml
+  SUB9: # 兜底
+    <<: *hp
+    # url: "https://anaer.github.io/Sub/clash.yaml"
+    url: "https://ghproxy.cfd/https://raw.githubusercontent.com/anaer/Sub/main/clash.yaml"
+    path: ./proxies/SUB9.yaml
 
 #endregion 代理源
 
@@ -53,7 +53,7 @@ proxy-providers:
 mixed-port: 7890                            # 混合端口 HTTP和SOCKS5使用同一个端口
 
 mode: rule                                  # 规则模式: rule/global/direct/script
-log-level: warning                          # 日志等级: silent/error/warning/info/debug
+log-level: debug                            # 日志等级: silent/error/warning/info/debug
 
 allow-lan: true                             # 允许局域网的连接 (可用来共享代理)
 bind-address: "*"                           # 绑定IP地址, 仅作用于allow-lan为true, '*' 表示所有地址
