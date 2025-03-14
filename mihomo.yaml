@@ -33,35 +33,63 @@ proxy-providers:
   SUB0:
     type: file
     path: ./proxies/SUB0.yaml
+    override:
+      additional-prefix: "0-"
   SUB1:
     <<: *hp
     url: "https://bestsub.bestrui.ggff.net/share/bestsub/cdcefaa4-1f0d-462e-ba76-627b344989f2/all.yaml"
     path: ./proxies/SUB1.yaml
+    override:
+      additional-prefix: "1-"
   SUB2:
     <<: *hp
     url: "https://udwtlink.top/b71f4e05-99bb-4bc9-9292-3ec4d872835d/clash"
     path: ./proxies/SUB2.yaml
-  SUB3:
-    <<: *hp
-    url: "https://cloud.xjyjc.top/vio/cloud/client/subscribe?token=ac6ff77c6f65fc9ac511f905a417526c"
-    path: ./proxies/SUB3.yaml
-  SUB4:
-    <<: *hp
-    url: "https://api.e687699.top/api/v1/client/subscribe?token=d51f623392f42a41accd2d889987e0cd"
-    path: ./proxies/SUB4.yaml
-  # SUB5:
+    override:
+      additional-prefix: "2-"
+  # SUB3:
   #   <<: *hp
-  #   url: "https://45.137.181.197/api/v1/client/subscribe?token=57141b33b664412b3254cd69853edc57"
-  #   path: ./proxies/SUB5.yaml
-  SUB6:
+  #   url: "https://cloud.xjyjc.top/vio/cloud/client/subscribe?token=ac6ff77c6f65fc9ac511f905a417526c"
+  #   path: ./proxies/SUB3.yaml
+  #   override:
+  #     additional-prefix: "3-"
+  # SUB4:
+  #   <<: *hp
+  #   url: "https://api.e687699.top/api/v1/client/subscribe?token=d51f623392f42a41accd2d889987e0cd"
+  #   path: ./proxies/SUB4.yaml
+  #   override:
+  #     additional-prefix: "4-"
+  SUB5:
     <<: *hp
-    url: "https://api-hy.02000.net/api/v1/client/subscribe?token=c1e7a542d82991f1011d0235ab4cc33f"
-    path: ./proxies/SUB6.yaml
+    url: "https://sub.ndllz.me/sub"
+    path: ./proxies/SUB5.yaml
+    override:
+      additional-prefix: "5-"
+  # SUB6:
+  #   <<: *hp
+  #   url: "https://api-hy.02000.net/api/v1/client/subscribe?token=c1e7a542d82991f1011d0235ab4cc33f"
+  #   path: ./proxies/SUB6.yaml
+  #   override:
+  #     additional-prefix: "6-"
+  # SUB7:
+  #   <<: *hp
+  #   url: "https://sub.ndllz.me/sub2"
+  #   path: ./proxies/SUB7.yaml
+  #   override:
+  #     additional-prefix: "7-"
+  SUB8:
+    <<: *hp
+    url: "https://suo.yt/xGo1FPI"
+    path: ./proxies/SUB8.yaml
+    override:
+      additional-prefix: "8-"
   SUB9: # 兜底
     <<: *hp
     # url: "https://anaer.github.io/Sub/clash.yaml"
     url: "https://ghproxy.cfd/https://raw.githubusercontent.com/anaer/Sub/main/clash.yaml"
     path: ./proxies/SUB9.yaml
+    override:
+      additional-prefix: "9-"
 
 #endregion 代理源
 
@@ -195,7 +223,8 @@ tun:                                        # Tun配置
 hosts:                                      # 类似于 /etc/hosts, 仅支持配置单个 IP
   doh.pub: [1.12.12.12, 120.53.53.53]
   dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
-  linux.do: [104.18.2.161, 104.18.3.161, 162.159.152.2, 162.159.153.2]
+  # linux.do: [104.18.2.161, 104.18.3.161, 162.159.152.2, 162.159.153.2] # L站找的
+  linux.do: [104.17.121.172, 104.17.122.51, 104.17.125.69] # CloudflareST测速
   gist.github.com: [140.82.112.4]
 #endregion hosts配置
 

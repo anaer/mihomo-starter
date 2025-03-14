@@ -13,14 +13,14 @@ dns:
     nameserver: ['https://120.53.53.53/dns-query', 'https://223.5.5.5/dns-query']
     proxy-server-nameserver: ['https://120.53.53.53/dns-query', 'https://223.5.5.5/dns-query']
 proxies:
-    - { name: '电报群: https://t.me/emovpn x3', type: trojan, server: t38.emoyes.top, port: 27554, password: 04f8b43b-70b7-4b26-94b5-2486e86d9eb0, udp: true, sni: www.python.org, skip-cert-verify: true }
-    - { name: 「加入会员解锁流媒体」x3, type: trojan, server: t36.emoyes.top, port: 46355, password: 04f8b43b-70b7-4b26-94b5-2486e86d9eb0, udp: true, sni: www.python.org, skip-cert-verify: true }
-    - { name: '「🇪🇸」EMO | 芝麻蕉 x3', type: trojan, server: t37.emoyes.top, port: 46356, password: 04f8b43b-70b7-4b26-94b5-2486e86d9eb0, udp: true, sni: www.python.org, skip-cert-verify: true }
+    - { name: '电报群: https://t.me/emovpn x3', type: trojan, server: t38.emoyes.top, port: 27555, password: 04f8b43b-70b7-4b26-94b5-2486e86d9eb0, udp: true, sni: www.python.org, skip-cert-verify: true }
+    - { name: 「加入会员解锁流媒体」x3, type: trojan, server: t36.emoyes.top, port: 46356, password: 04f8b43b-70b7-4b26-94b5-2486e86d9eb0, udp: true, sni: www.python.org, skip-cert-verify: true }
+    - { name: '「🇪🇸」EMO | 芝麻蕉 x3', type: trojan, server: t37.emoyes.top, port: 46357, password: 04f8b43b-70b7-4b26-94b5-2486e86d9eb0, udp: true, sni: www.python.org, skip-cert-verify: true }
     - { name: '「🇯🇵」EMO | 冰灵果 x3', type: trojan, server: t39.emoyes.top, port: 27555, password: 04f8b43b-70b7-4b26-94b5-2486e86d9eb0, udp: true, sni: www.python.org, skip-cert-verify: true }
     - { name: '「🇸🇬」EMO | 西贡蕉 x3', type: trojan, server: t32.emoyes.top, port: 8446, password: 04f8b43b-70b7-4b26-94b5-2486e86d9eb0, udp: true, sni: www.python.org, skip-cert-verify: true }
-    - { name: '「🇺🇸」EMO | 天元果 x3', type: trojan, server: t33.emoyes.top, port: 660, password: 04f8b43b-70b7-4b26-94b5-2486e86d9eb0, udp: true, sni: www.python.org, skip-cert-verify: true }
-    - { name: '「🇦🇺」EMO | 红富士 x3', type: trojan, server: t34.emoyes.top, port: 34606, password: 04f8b43b-70b7-4b26-94b5-2486e86d9eb0, udp: true, sni: www.python.org, skip-cert-verify: true }
-    - { name: '「🇨🇦」EMO | 冰糖心 x3', type: trojan, server: t35.emoyes.top, port: 34607, password: 04f8b43b-70b7-4b26-94b5-2486e86d9eb0, udp: true, sni: www.python.org, skip-cert-verify: true }
+    - { name: '「🇺🇸」EMO | 天元果 x3', type: trojan, server: t33.emoyes.top, port: 661, password: 04f8b43b-70b7-4b26-94b5-2486e86d9eb0, udp: true, sni: www.python.org, skip-cert-verify: true }
+    - { name: '「🇦🇺」EMO | 红富士 x3', type: trojan, server: t34.emoyes.top, port: 34607, password: 04f8b43b-70b7-4b26-94b5-2486e86d9eb0, udp: true, sni: www.python.org, skip-cert-verify: true }
+    - { name: '「🇨🇦」EMO | 冰糖心 x3', type: trojan, server: t35.emoyes.top, port: 34608, password: 04f8b43b-70b7-4b26-94b5-2486e86d9eb0, udp: true, sni: www.python.org, skip-cert-verify: true }
 proxy-groups:
     - { name: EMO, type: select, proxies: [自动选择, 故障转移, '电报群: https://t.me/emovpn x3', 「加入会员解锁流媒体」x3, '「🇪🇸」EMO | 芝麻蕉 x3', '「🇯🇵」EMO | 冰灵果 x3', '「🇸🇬」EMO | 西贡蕉 x3', '「🇺🇸」EMO | 天元果 x3', '「🇦🇺」EMO | 红富士 x3', '「🇨🇦」EMO | 冰糖心 x3'] }
     - { name: 自动选择, type: url-test, proxies: ['电报群: https://t.me/emovpn x3', 「加入会员解锁流媒体」x3, '「🇪🇸」EMO | 芝麻蕉 x3', '「🇯🇵」EMO | 冰灵果 x3', '「🇸🇬」EMO | 西贡蕉 x3', '「🇺🇸」EMO | 天元果 x3', '「🇦🇺」EMO | 红富士 x3', '「🇨🇦」EMO | 冰糖心 x3'], url: 'http://www.gstatic.com/generate_204', interval: 86400 }

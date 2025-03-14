@@ -1,190 +1,6 @@
 proxies:
-    - name: "Power BY BestSub | 03/13 | \U0001F1F9\U0001F1FC TW 005 | ⬇️ 9.12 MB/s"
-      password: exaxgqkKkd0TAMrCxeonWg==
-      port: 1443
-      server: twmoon1-cdn-route.couldflare-cdn.com
-      skip-cert-verify: false
-      sni: twmoon1-cdn-route.couldflare-cdn.com
-      tls: true
-      type: http
-      username: mrwdfNTD8M79LCukCieldrqZWqs=
-    - cipher: chacha20-ietf-poly1305
-      name: "\U0001F1FA\U0001F1F8 US 007 | ⬇️ 12.23 MB/s"
-      password: 704ebe80-f058-4457-a5ea-b9cd9ad4281f
-      port: 20016
-      server: gy.666666222.shop
-      type: ss
-      udp: true
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: "\U0001F1EF\U0001F1F5 JP 017 | ⬇️ 25.47 MB/s"
-      network: tcp
-      port: 4132
-      reality-opts:
-        public-key: tAiPw07Na8UsZ8m7dfTy9bDqqc-aVECs_-NLlGk-YQY
-      server: 45.192.249.184
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      uuid: e190cf54-cabc-4585-88ec-0e80f72f1abf
     - cipher: aes-128-gcm
-      name: "\U0001F1FA\U0001F1F8 US 024 | ⬇️ 36.85 MB/s"
-      password: Sj10bnYDe7w6V29E
-      plugin: obfs
-      plugin-opts:
-        host: 5c725c78c3.m.ctrip.com
-        mode: http
-      port: 10004
-      server: east.inmysecretlife.xyz
-      type: ss
-      udp: true
-    - client-fingerprint: chrome
-      name: "\U0001F1EF\U0001F1F5 JP 026 | ⬇️ 7.04 MB/s"
-      network: ws
-      port: 2052
-      server: 156.238.18.165
-      skip-cert-verify: false
-      tls: false
-      type: vless
-      uuid: 53fa8faf-ba4b-4322-9c69-a3e5b1555049
-      ws-opts:
-        headers:
-            Host: redw.pooriam.ir
-        path: /TM-AZARBAYJAB1TM-AZARBAYJAB1TM-AZARBAYJAB1
-    - client-fingerprint: chrome
-      name: "\U0001F1EF\U0001F1F5 JP 028 | ⬇️ 6.70 MB/s"
-      network: ws
-      port: 2095
-      server: 156.238.18.163
-      skip-cert-verify: false
-      tls: false
-      type: vless
-      uuid: 53fa8faf-ba4b-4322-9c69-a3e5b1555049
-      ws-opts:
-        headers:
-            Host: redw.pooriam.ir
-        path: /TM-AZARBAYJAB1TM-AZARBAYJAB1TM-AZARBAYJAB1
-    - cipher: chacha20-ietf-poly1305
-      name: "\U0001F1FA\U0001F1F3 UN 030 | ⬇️ 10.08 MB/s"
-      password: ZDljYmNh
-      port: 1443
-      server: 95.164.68.37
-      type: ss
-    - cipher: aes-128-gcm
-      name: "\U0001F1EF\U0001F1F5 JP 034 | ⬇️ 70.32 MB/s"
-      password: Sj10bnYDe7w6V29E
-      plugin: obfs
-      plugin-opts:
-        host: 5c725c78c3.m.ctrip.com
-        mode: http
-      port: 10002
-      server: east.inmysecretlife.xyz
-      type: ss
-      udp: true
-    - client-fingerprint: chrome
-      name: "\U0001F1FA\U0001F1F8 US 043 | ⬇️ 8.15 MB/s"
-      network: ws
-      password: Pooria
-      port: 443
-      server: 104.17.148.22
-      skip-cert-verify: false
-      sni: 301.pOORiAm.ir
-      type: trojan
-      ws-opts:
-        headers:
-            Host: 301.pOORiAm.ir
-        path: /trPyOrWMfkHd15oxiI?ed=1520
-    - down: 1000
-      name: "\U0001F1EC\U0001F1E7 GB 046 | ⬇️ 6.01 MB/s"
-      password: b0e2dfd3-74d9-4ca3-a588-b4638e11ba76
-      port: 22851
-      ports: 22001-22999
-      server: aimanman-uk.sanguayun.com
-      skip-cert-verify: false
-      sni: aimanman-uk.sanguayun.com
-      type: hysteria2
-      up: 1000
-    - auth: a3661fb3-b0ab-4022-ba5c-7c0ef0e01db8
-      name: "\U0001F1E9\U0001F1EA DE 050 | ⬇️ 9.70 MB/s"
-      password: a3661fb3-b0ab-4022-ba5c-7c0ef0e01db8
-      port: 37732
-      server: 207.180.248.7
-      skip-cert-verify: true
-      sni: www.bing.com
-      type: hysteria2
-      udp: true
-    - cipher: aes-256-cfb
-      name: "\U0001F1E8\U0001F1ED CH 052 | ⬇️ 7.16 MB/s"
-      password: f8f7aCzcPKbsF8p3
-      port: 989
-      server: 84.17.53.160
-      type: ss
-    - down: 1000
-      name: "\U0001F1EC\U0001F1E7 GB 055 | ⬇️ 7.81 MB/s"
-      password: 6827b8b3-d62f-43d8-ad6a-050a72b4460d
-      port: 22929
-      ports: 22001-22999
-      server: aimanman-uk.sanguayun.com
-      skip-cert-verify: false
-      sni: aimanman-uk.sanguayun.com
-      type: hysteria2
-      up: 1000
-    - client-fingerprint: chrome
-      name: "\U0001F1FA\U0001F1F8 US 059 | ⬇️ 6.74 MB/s"
-      network: ws
-      port: 8880
-      server: 154.83.2.156
-      skip-cert-verify: false
-      tls: false
-      type: vless
-      uuid: 53fa8faf-ba4b-4322-9c69-a3e5b1555049
-      ws-opts:
-        headers:
-            Host: redw.pooriam.ir
-        path: /
-    - cipher: aes-128-gcm
-      name: "\U0001F1EC\U0001F1E7 GB 063 | ⬇️ 32.70 MB/s"
-      password: Sj10bnYDe7w6V29E
-      plugin: obfs
-      plugin-opts:
-        host: 5c725c78c3.m.ctrip.com
-        mode: http
-      port: 11058
-      server: bjdata1.fc-sigma.xyz
-      type: ss
-      udp: true
-    - cipher: aes-256-gcm
-      country: HK
-      name: "\U0001F1ED\U0001F1F0 HK 069 | ⬇️ 40.75 MB/s"
-      password: 9acfc574-acc3-4c2b-ab3b-491d43a6eb83
-      port: 21114
-      server: okanc.node-is.green
-      type: ss
-    - client-fingerprint: chrome
-      name: "\U0001F1F3\U0001F1F1 NL 076 | ⬇️ 6.32 MB/s"
-      network: ws
-      port: 2053
-      server: 173.245.59.132
-      servername: holze.gt-ov.com
-      tls: true
-      type: vless
-      uuid: 62a96482-8a33-4190-a0c1-7a22bcb9effb
-      ws-opts:
-        headers:
-            host: holze.gt-ov.com
-        path: /
-    - down: 1000
-      name: "\U0001F1EC\U0001F1E7 GB 077 | ⬇️ 9.20 MB/s"
-      password: 6827b8b3-d62f-43d8-ad6a-050a72b4460d
-      port: 22726
-      ports: 22001-22999
-      server: aimanman-uk.sanguayun.com
-      skip-cert-verify: false
-      sni: aimanman-uk.sanguayun.com
-      type: hysteria2
-      up: 1000
-    - cipher: aes-128-gcm
-      name: "\U0001F1ED\U0001F1F0 HK 082 | ⬇️ 46.38 MB/s"
+      name: "Power BY BestSub 03/14 更新 \U0001F1ED\U0001F1F0 HK 007 | ⬇️ 49.02 MB/s"
       password: Sj10bnYDe7w6V29E
       plugin: obfs
       plugin-opts:
@@ -196,41 +12,38 @@ proxies:
       udp: true
     - alterId: 0
       cipher: auto
-      name: "\U0001F1E6\U0001F1FA AU 094 | ⬇️ 11.27 MB/s"
-      port: 45063
-      server: xdd.dashuai.cyou
+      name: "\U0001F1FA\U0001F1F8 US 013 | ⬇️ 5.85 MB/s"
+      port: 32246
+      server: 38.209.65.51
       tls: false
       type: vmess
+      uuid: 3ded5f28-0704-4369-c011-68309fd94cd0
+    - cipher: aes-256-cfb
+      name: "\U0001F1EF\U0001F1F5 JP 016 | ⬇️ 23.24 MB/s"
+      password: amazonskr05
+      port: 443
+      server: 57.180.240.249
+      type: ss
+    - auth: a3661fb3-b0ab-4022-ba5c-7c0ef0e01db8
+      name: "\U0001F1E9\U0001F1EA DE 017 | ⬇️ 14.88 MB/s"
+      password: a3661fb3-b0ab-4022-ba5c-7c0ef0e01db8
+      port: 37732
+      server: 207.180.248.7
+      skip-cert-verify: true
+      sni: www.bing.com
+      type: hysteria2
       udp: true
-      uuid: 106dfcfe-d320-49ba-9711-393c02255876
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: "\U0001F1EF\U0001F1F5 JP 103 | ⬇️ 30.66 MB/s"
-      network: tcp
-      port: 62492
-      reality-opts:
-        public-key: NQEG-uVCTDaw6KN56MmbJpOJTZwC3ADYjKhiqwL9lRg
-      server: 156.246.95.253
-      servername: www.cloudflare.com
+    - name: "\U0001F1F9\U0001F1FC TW 020 | ⬇️ 10.05 MB/s"
+      password: exaxgqkKkd0TAMrCxeonWg==
+      port: 1443
+      server: twmoon1-cdn-route.couldflare-cdn.com
+      skip-cert-verify: false
+      sni: twmoon1-cdn-route.couldflare-cdn.com
       tls: true
-      type: vless
-      uuid: 0ca430a8-d4a9-41c2-9096-cbe073578843
-    - cipher: chacha20-ietf-poly1305
-      name: "\U0001F1F9\U0001F1FC TW 107 | ⬇️ 10.43 MB/s"
-      password: 704ebe80-f058-4457-a5ea-b9cd9ad4281f
-      port: 20032
-      server: gy.666666222.shop
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: "\U0001F1FA\U0001F1F8 US 108 | ⬇️ 9.71 MB/s"
-      password: 704ebe80-f058-4457-a5ea-b9cd9ad4281f
-      port: 20013
-      server: gy.666666222.shop
-      type: ss
-      udp: true
+      type: http
+      username: mrwdfNTD8M79LCukCieldrqZWqs=
     - cipher: aes-128-gcm
-      name: "\U0001F1F8\U0001F1EC SG 110 | ⬇️ 38.52 MB/s"
+      name: "\U0001F1F8\U0001F1EC SG 023 | ⬇️ 50.92 MB/s"
       password: Sj10bnYDe7w6V29E
       plugin: obfs
       plugin-opts:
@@ -240,30 +53,36 @@ proxies:
       server: south.inmysecretlife.xyz
       type: ss
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: "\U0001F1F9\U0001F1FC TW 111 | ⬇️ 6.82 MB/s"
-      password: 704ebe80-f058-4457-a5ea-b9cd9ad4281f
-      port: 47564
-      server: gy.666666222.shop
+    - fast-open: true
+      name: "\U0001F1F7\U0001F1FA RU 027 | ⬇️ 9.52 MB/s"
+      password: dongtaiwang.com
+      port: 18626
+      server: 46.29.163.171
+      skip-cert-verify: true
+      sni: www.bing.com
+      type: hysteria2
+    - cipher: aes-256-cfb
+      name: "\U0001F1F0\U0001F1F7 KR 037 | ⬇️ 32.70 MB/s"
+      password: amazonskr05
+      port: 443
+      server: 3.34.253.95
+      type: ss
+    - cipher: aes-128-gcm
+      name: "\U0001F1EC\U0001F1E7 GB 039 | ⬇️ 34.43 MB/s"
+      password: Sj10bnYDe7w6V29E
+      plugin: obfs
+      plugin-opts:
+        host: 5c725c78c3.m.ctrip.com
+        mode: http
+      port: 11058
+      server: bjdata1.fc-sigma.xyz
       type: ss
       udp: true
     - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: "\U0001F1EF\U0001F1F5 JP 112 | ⬇️ 23.43 MB/s"
-      network: tcp
-      port: 54854
-      reality-opts:
-        public-key: 0FC6OFyfJJJoxulSNvQwDArwYigxABrcHmm0CPXsOlQ
-      server: 156.246.94.220
-      servername: www.amazon.com
-      tls: true
-      type: vless
-      uuid: fa59050b-1ca3-474b-aa1a-b7058d79f75b
-    - client-fingerprint: chrome
-      name: "\U0001F1FA\U0001F1F8 US 118 | ⬇️ 7.08 MB/s"
+      name: "\U0001F1EF\U0001F1F5 JP 040 | ⬇️ 6.84 MB/s"
       network: ws
-      port: 8880
-      server: 154.83.2.228
+      port: 2095
+      server: 156.238.18.163
       skip-cert-verify: false
       tls: false
       type: vless
@@ -271,173 +90,91 @@ proxies:
       ws-opts:
         headers:
             Host: redw.pooriam.ir
-        path: /
-    - delay: 1490
-      name: "\U0001F1FA\U0001F1F8 US 121 | ⬇️ 7.52 MB/s"
+        path: /TM-AZARBAYJAB1TM-AZARBAYJAB1TM-AZARBAYJAB1
+    - client-fingerprint: chrome
+      name: "\U0001F1EF\U0001F1F5 JP 041 | ⬇️ 11.47 MB/s"
       network: ws
       port: 2052
-      server: 45.149.12.183
-      servername: redw.pooriam.ir
+      server: 156.238.18.165
+      skip-cert-verify: false
       tls: false
       type: vless
-      udp: true
       uuid: 53fa8faf-ba4b-4322-9c69-a3e5b1555049
       ws-opts:
         headers:
             Host: redw.pooriam.ir
-        path: /TABRIZ.NET@AZARBAYJAB1@AZARBAYJAB1@AZARBAYJAB1?ed=2560
-    - country: IE
-      name: "\U0001F1EE\U0001F1EA IE 125 | ⬇️ 9.16 MB/s"
-      password: telegram-id-privatevpns
-      port: 22222
-      server: 54.246.66.2
-      sni: trojan.burgerip.co.uk
-      type: trojan
-      udp: true
-    - alterId: 0
+        path: /TM-AZARBAYJAB1TM-AZARBAYJAB1TM-AZARBAYJAB1
+    - alterId: 64
       cipher: auto
-      name: "\U0001F1EF\U0001F1F5 JP 134 | ⬇️ 26.12 MB/s"
-      network: ws
-      port: 22443
-      server: tls.11.node-for-bigairport.win
+      country: CN
+      h2-opts: {}
+      http-opts: {}
+      name: "\U0001F1FA\U0001F1F8 US 051 | ⬇️ 6.76 MB/s"
+      network: tcp
+      port: 48712
+      server: 107.148.207.249
       skip-cert-verify: true
-      tls: true
       type: vmess
-      udp: true
-      uuid: b71f9e84-86c9-49c4-b5f4-b33b35ee7410
-      ws-opts:
-        headers:
-            Host: tls.11.node-for-bigairport.win
-        path: /
-    - cipher: aes-256-cfb
-      name: "\U0001F1F8\U0001F1EC SG 135 | ⬇️ 23.04 MB/s"
-      password: amazonskr05
-      port: 443
-      server: 54.169.255.43
-      type: ss
-    - alterId: 0
-      cipher: auto
-      name: "\U0001F1F8\U0001F1EC SG 136 | ⬇️ 20.85 MB/s"
-      port: 45055
-      server: xdd.dashuai.cyou
-      tls: false
-      type: vmess
-      udp: true
-      uuid: 106dfcfe-d320-49ba-9711-393c02255876
-    - alterId: 0
-      cipher: auto
-      name: "\U0001F1F9\U0001F1FC TW 140 | ⬇️ 17.54 MB/s"
-      port: 45077
-      server: xdd.dashuai.cyou
-      tls: false
-      type: vmess
-      udp: true
-      uuid: 106dfcfe-d320-49ba-9711-393c02255876
-    - name: "\U0001F1EF\U0001F1F5 JP 141 | ⬇️ 9.38 MB/s"
-      password: exaxgqkKkd0TAMrCxeonWg==
-      port: 443
-      server: jp104-cdn-route.couldflare-cdn.com
-      skip-cert-verify: false
-      sni: jp104-cdn-route.couldflare-cdn.com
-      tls: true
-      type: http
-      username: mrwdfNTD8M79LCukCieldrqZWqs=
+      uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
     - down: 1000
-      name: "\U0001F1F0\U0001F1F7 KR 142 | ⬇️ 6.45 MB/s"
+      name: "\U0001F1EC\U0001F1E7 GB 053 | ⬇️ 10.58 MB/s"
       password: b0e2dfd3-74d9-4ca3-a588-b4638e11ba76
-      port: 22060
-      ports: 22001-22999
-      server: aimanman-kr.sanguayun.com
-      skip-cert-verify: false
-      sni: aimanman-kr.sanguayun.com
-      type: hysteria2
-      up: 1000
-    - cipher: aes-256-cfb
-      name: "\U0001F1FA\U0001F1F8 US 143 | ⬇️ 11.52 MB/s"
-      password: amazonskr05
-      port: 443
-      server: 54.184.74.88
-      type: ss
-    - down: 1000
-      name: "\U0001F1EC\U0001F1E7 GB 149 | ⬇️ 8.80 MB/s"
-      password: b0e2dfd3-74d9-4ca3-a588-b4638e11ba76
-      port: 22455
+      port: 22829
       ports: 22001-22999
       server: aimanman-uk.sanguayun.com
       skip-cert-verify: false
       sni: aimanman-uk.sanguayun.com
       type: hysteria2
       up: 1000
-    - alterId: 0
-      cipher: auto
-      name: "\U0001F1F7\U0001F1FA RU 153 | ⬇️ 16.47 MB/s"
+    - name: "\U0001F1FA\U0001F1F8 US 055 | ⬇️ 5.97 MB/s"
       network: ws
-      port: 20022
-      server: f77f38c7-faea-1c49-708a-489769f53c40.7head.icu
-      skip-cert-verify: true
+      port: 80
+      server: 104.24.147.64
+      servername: ppal03-ppal03.letiwe3303.workers.dev
       tls: false
-      type: vmess
-      udp: true
-      uuid: 21c90669-193d-49d3-8e37-f5c1462eb134
+      type: vless
+      uuid: 03e4d6fe-f461-499f-b9c6-35c60f192e1a
       ws-opts:
         headers:
-            Host: tms.dingtalk.com
-        path: /
-    - cipher: chacha20-ietf-poly1305
-      name: "\U0001F1EF\U0001F1F5 JP 154 | ⬇️ 18.44 MB/s"
-      password: 704ebe80-f058-4457-a5ea-b9cd9ad4281f
-      port: 20004
-      server: gy.666666222.shop
+            Host: ppal03-ppal03.letiwe3303.workers.dev
+        path: /?ed=2560
+    - cipher: aes-128-gcm
+      name: "\U0001F1EF\U0001F1F5 JP 056 | ⬇️ 63.69 MB/s"
+      password: Sj10bnYDe7w6V29E
+      plugin: obfs
+      plugin-opts:
+        host: 5c725c78c3.m.ctrip.com
+        mode: http
+      port: 10002
+      server: east.inmysecretlife.xyz
       type: ss
       udp: true
-    - alterId: 0
-      cipher: auto
-      name: "\U0001F1FA\U0001F1F8 US 155 | ⬇️ 9.60 MB/s"
-      network: ws
-      port: 12353
-      server: 0000000000000000000000000045.bgroup-node-for-bigairport.sbs
-      skip-cert-verify: true
-      tls: true
-      type: vmess
-      udp: true
-      uuid: b71f9e84-86c9-49c4-b5f4-b33b35ee7410
-      ws-opts:
-        headers:
-            Host: 0000000000000000000000000045.bgroup-node-for-bigairport.sbs
-        path: /
-    - alterId: 0
-      cipher: auto
-      name: "\U0001F1EF\U0001F1F5 JP 166 | ⬇️ 6.81 MB/s"
-      network: ws
-      port: 23443
-      server: tls.04.node-for-bigairport.win
-      skip-cert-verify: true
-      tls: true
-      type: vmess
-      udp: true
-      uuid: b71f9e84-86c9-49c4-b5f4-b33b35ee7410
-      ws-opts:
-        headers:
-            Host: tls.04.node-for-bigairport.win
-        path: /
-    - name: "\U0001F1EE\U0001F1EA IE 168 | ⬇️ 8.96 MB/s"
-      password: telegram-id-privatevpns
-      port: 22222
-      server: 54.171.242.255
-      skip-cert-verify: false
-      sni: trojan.burgerip.co.uk
-      type: trojan
-    - name: "\U0001F1ED\U0001F1F0 HK 173 | ⬇️ 35.66 MB/s"
-      password: exaxgqkKkd0TAMrCxeonWg==
-      port: 443
-      server: hkre1-cdn-route.couldflare-cdn.com
-      skip-cert-verify: false
-      sni: hkre1-cdn-route.couldflare-cdn.com
-      tls: true
-      type: http
-      username: mrwdfNTD8M79LCukCieldrqZWqs=
     - cipher: aes-128-gcm
-      name: "\U0001F1F9\U0001F1FC TW 176 | ⬇️ 49.07 MB/s"
+      name: "\U0001F1FA\U0001F1F8 US 062 | ⬇️ 42.55 MB/s"
+      password: Sj10bnYDe7w6V29E
+      plugin: obfs
+      plugin-opts:
+        host: 5c725c78c3.m.ctrip.com
+        mode: http
+      port: 10004
+      server: east.inmysecretlife.xyz
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: "\U0001F1FA\U0001F1F8 US 074 | ⬇️ 9.89 MB/s"
+      password: amazonskr05
+      port: 443
+      server: 18.236.137.219
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: "\U0001F1F8\U0001F1EC SG 077 | ⬇️ 20.33 MB/s"
+      password: amazonskr05
+      port: 443
+      server: 13.229.59.76
+      type: ss
+    - cipher: aes-128-gcm
+      name: "\U0001F1F9\U0001F1FC TW 093 | ⬇️ 50.81 MB/s"
       password: Sj10bnYDe7w6V29E
       plugin: obfs
       plugin-opts:
@@ -447,32 +184,62 @@ proxies:
       server: gzdata1.fc-sigma.xyz
       type: ss
       udp: true
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: "\U0001F1EF\U0001F1F5 JP 177 | ⬇️ 25.11 MB/s"
+    - cipher: aes-256-cfb
+      name: "\U0001F1F0\U0001F1F7 KR 105 | ⬇️ 26.40 MB/s"
+      password: amazonskr05
+      port: 443
+      server: 43.202.49.76
+      type: ss
+    - cipher: aes-256-cfb
+      name: "\U0001F1FA\U0001F1F3 UN 106 | ⬇️ 21.90 MB/s"
+      password: amazonskr05
+      port: 443
+      server: 47.128.154.164
+      tfo: false
+      type: ss
+    - alterId: 64
+      cipher: auto
+      country: ' US'
+      h2-opts: {}
+      http-opts: {}
+      name: "\U0001F1FA\U0001F1F8 US 115 | ⬇️ 7.60 MB/s"
       network: tcp
-      port: 63134
-      reality-opts:
-        public-key: sJyLIpS_6XMDEDhIgr0Xq2yAI8LdUaktWyrUKIVMOSw
-      server: 156.246.89.131
-      servername: www.ebay.com
-      tls: true
-      type: vless
-      uuid: f212a7d3-7175-40bb-bba2-fde5668893e6
+      port: 48712
+      server: 107.148.207.249
+      servername: appsvs.shop
+      skip-cert-verify: true
+      type: vmess
+      uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
+      ws-path: /
+    - alpn:
+        - h3
+      auth_str: dongtaiwang.com
+      down: 55
+      fast-open: true
+      name: "\U0001F1EB\U0001F1F7 FR 118 | ⬇️ 5.33 MB/s"
+      port: 44557
+      protocol: udp
+      server: 195.154.200.178
+      skip-cert-verify: true
+      sni: apple.com
+      type: hysteria
+      up: 11
+    - cipher: aes-256-cfb
+      name: "\U0001F1FA\U0001F1F8 US 119 | ⬇️ 9.31 MB/s"
+      password: amazonskr05
+      port: 443
+      server: 34.221.169.63
+      type: ss
+    - cipher: aes-256-cfb
+      name: "\U0001F1F8\U0001F1EC SG 126 | ⬇️ 22.38 MB/s"
+      password: amazonskr05
+      port: 443
+      server: 54.254.131.232
+      type: ss
     - down: 1000
-      name: "\U0001F1EC\U0001F1E7 GB 179 | ⬇️ 8.45 MB/s"
+      name: "\U0001F1F0\U0001F1F7 KR 136 | ⬇️ 7.53 MB/s"
       password: 6827b8b3-d62f-43d8-ad6a-050a72b4460d
-      port: 22740
-      ports: 22001-22999
-      server: aimanman-uk.sanguayun.com
-      skip-cert-verify: false
-      sni: aimanman-uk.sanguayun.com
-      type: hysteria2
-      up: 1000
-    - down: 1000
-      name: "\U0001F1F0\U0001F1F7 KR 181 | ⬇️ 7.83 MB/s"
-      password: b0e2dfd3-74d9-4ca3-a588-b4638e11ba76
-      port: 22566
+      port: 22508
       ports: 22001-22999
       server: aimanman-kr.sanguayun.com
       skip-cert-verify: false
@@ -481,75 +248,87 @@ proxies:
       up: 1000
     - alterId: 0
       cipher: auto
-      name: "\U0001F1ED\U0001F1F0 HK 182 | ⬇️ 73.42 MB/s"
+      country: "\U0001F1FA\U0001F1F8US"
+      h2-opts: {}
+      http-opts: {}
+      name: "\U0001F1EF\U0001F1F5 JP 139 | ⬇️ 11.37 MB/s"
       network: ws
-      port: 80
-      server: a8606b8a-7412-19ea-dd7f-2d29cf247dcb.castlepeakhospital.moe
-      skip-cert-verify: true
-      tls: false
-      type: vmess
-      udp: true
-      uuid: 21c90669-193d-49d3-8e37-f5c1462eb134
-      ws-opts:
-        headers:
-            Host: tms.dingtalk.com
-        path: /
-    - cipher: chacha20-ietf-poly1305
-      name: "\U0001F1ED\U0001F1F0 HK 187 | ⬇️ 44.72 MB/s"
-      password: 704ebe80-f058-4457-a5ea-b9cd9ad4281f
-      port: 20035
-      server: gy.666666222.shop
-      type: ss
-      udp: true
-    - alterId: 0
-      cipher: auto
-      name: "\U0001F1F8\U0001F1EC SG 188 | ⬇️ 87.11 MB/s"
-      network: ws
-      port: 80
-      server: 3fc8cee7-4c89-a363-264d-6cbc4ddf92fc.castlepeakhospital.moe
-      skip-cert-verify: true
-      tls: false
-      type: vmess
-      udp: true
-      uuid: 21c90669-193d-49d3-8e37-f5c1462eb134
-      ws-opts:
-        headers:
-            Host: tms.dingtalk.com
-        path: /
-    - country: ' US'
-      name: "\U0001F1FA\U0001F1F8 US 189 | ⬇️ 9.43 MB/s"
-      password: 90e7b2f3-fb61-4fd7-959f-176e9a51d8d7
-      port: 20230
-      server: us004.421421.xyz
-      skip-cert-verify: true
-      type: trojan
-      udp: true
-    - alterId: 0
-      cipher: auto
-      name: "\U0001F1EF\U0001F1F5 JP 194 | ⬇️ 25.67 MB/s"
-      network: ws
-      port: 33443
-      server: tls.19.node-for-bigairport.win
+      port: 443
+      server: mix1.998998.best
+      servername: jp1-2.zfork.com
       skip-cert-verify: true
       tls: true
       type: vmess
-      udp: true
-      uuid: b71f9e84-86c9-49c4-b5f4-b33b35ee7410
+      uuid: 07b7b563-f868-49fb-943a-6425e3dc34d9
       ws-opts:
         headers:
-            Host: tls.19.node-for-bigairport.win
-        path: /
-    - alterId: 0
-      cipher: auto
-      name: "\U0001F1ED\U0001F1F0 HK 200 | ⬇️ 8.58 MB/s"
-      port: 45051
-      server: xdd.dashuai.cyou
-      tls: false
-      type: vmess
+            HOST: jp1-2.zfork.com
+        path: /wpmckfpajfng?ed=2560
+    - cipher: aes-256-cfb
+      name: "\U0001F1EF\U0001F1F5 JP 140 | ⬇️ 30.16 MB/s"
+      password: amazonskr05
+      port: 443
+      server: 13.230.142.42
+      type: ss
+    - cipher: chacha20-ietf-poly1305
+      name: "\U0001F1FA\U0001F1F8 US 141 | ⬇️ 7.40 MB/s"
+      password: 318d575434212e48
+      port: 11208
+      server: 82.197.66.69
+      type: ss
+    - country: SG
+      name: "\U0001F1F8\U0001F1EC SG 142 | ⬇️ 14.09 MB/s"
+      password: 5a81db08-7af3-49a4-b089-b7a5b2c24c38
+      port: 20230
+      server: sg005.421421.xyz
+      skip-cert-verify: true
+      sni: 421421.xyz
+      type: trojan
       udp: true
-      uuid: 106dfcfe-d320-49ba-9711-393c02255876
+    - down: 1000
+      name: "\U0001F1EC\U0001F1E7 GB 143 | ⬇️ 6.33 MB/s"
+      password: b0e2dfd3-74d9-4ca3-a588-b4638e11ba76
+      port: 22224
+      ports: 22001-22999
+      server: aimanman-uk.sanguayun.com
+      skip-cert-verify: false
+      sni: aimanman-uk.sanguayun.com
+      type: hysteria2
+      up: 1000
+    - down: 1000
+      name: "\U0001F1EC\U0001F1E7 GB 146 | ⬇️ 6.00 MB/s"
+      password: 6827b8b3-d62f-43d8-ad6a-050a72b4460d
+      port: 22184
+      ports: 22001-22999
+      server: aimanman-uk.sanguayun.com
+      skip-cert-verify: false
+      sni: aimanman-uk.sanguayun.com
+      type: hysteria2
+      up: 1000
+    - cipher: chacha20-ietf
+      name: "\U0001F1FA\U0001F1F8 US 149 | ⬇️ 6.19 MB/s"
+      password: asd123456
+      port: 8388
+      server: 137.175.113.215
+      type: ss
+    - down: 1000
+      name: "\U0001F1F0\U0001F1F7 KR 150 | ⬇️ 8.90 MB/s"
+      password: 6827b8b3-d62f-43d8-ad6a-050a72b4460d
+      port: 22386
+      ports: 22001-22999
+      server: aimanman-kr.sanguayun.com
+      skip-cert-verify: false
+      sni: aimanman-kr.sanguayun.com
+      type: hysteria2
+      up: 1000
+    - cipher: aes-256-cfb
+      name: "\U0001F1F0\U0001F1F7 KR 151 | ⬇️ 25.67 MB/s"
+      password: amazonskr05
+      port: 443
+      server: 43.201.33.107
+      type: ss
     - cipher: aes-128-gcm
-      name: "\U0001F1F0\U0001F1F7 KR 202 | ⬇️ 61.12 MB/s"
+      name: "\U0001F1F0\U0001F1F7 KR 155 | ⬇️ 50.05 MB/s"
       password: Sj10bnYDe7w6V29E
       plugin: obfs
       plugin-opts:
@@ -559,43 +338,69 @@ proxies:
       server: shdata1.fc-sigma.xyz
       type: ss
       udp: true
-    - alterId: 0
-      cipher: auto
-      name: "\U0001F1EF\U0001F1F5 JP 220 | ⬇️ 6.80 MB/s"
-      network: ws
+    - name: "\U0001F1ED\U0001F1F0 HK 163 | ⬇️ 31.93 MB/s"
+      password: exaxgqkKkd0TAMrCxeonWg==
       port: 443
-      server: tls.08.node-for-bigairport.win
-      skip-cert-verify: true
-      tls: true
-      type: vmess
-      udp: true
-      uuid: b71f9e84-86c9-49c4-b5f4-b33b35ee7410
-      ws-opts:
-        headers:
-            Host: tls.08.node-for-bigairport.win
-        path: /
-    - cipher: aes-256-cfb
-      name: "\U0001F1FA\U0001F1F8 US 222 | ⬇️ 11.01 MB/s"
-      password: amazonskr05
-      port: 443
-      server: 18.237.73.216
-      type: ss
-    - cipher: aes-256-cfb
-      name: "\U0001F1EF\U0001F1F5 JP 223 | ⬇️ 24.37 MB/s"
-      password: amazonskr05
-      port: 443
-      server: 43.207.102.171
-      type: ss
-      udp: true
-    - name: "\U0001F1EF\U0001F1F5 JP 237 | ⬇️ 7.27 MB/s"
-      network: ws
-      port: 2095
-      server: 156.238.18.48
+      server: hkre1-cdn-route.couldflare-cdn.com
       skip-cert-verify: false
-      tls: false
+      sni: hkre1-cdn-route.couldflare-cdn.com
+      tls: true
+      type: http
+      username: mrwdfNTD8M79LCukCieldrqZWqs=
+    - cipher: aes-256-cfb
+      name: "\U0001F1F8\U0001F1EC SG 171 | ⬇️ 23.58 MB/s"
+      password: amazonskr05
+      port: 443
+      server: 47.128.73.227
+      type: ss
+    - down: 1000
+      name: "\U0001F1F0\U0001F1F7 KR 177 | ⬇️ 8.68 MB/s"
+      password: b0e2dfd3-74d9-4ca3-a588-b4638e11ba76
+      port: 22750
+      ports: 22001-22999
+      server: aimanman-kr.sanguayun.com
+      skip-cert-verify: false
+      sni: aimanman-kr.sanguayun.com
+      type: hysteria2
+      up: 1000
+    - alpn:
+        - h3
+      auth_str: dongtaiwang.com
+      down: 100
+      fast-open: true
+      name: "\U0001F1F7\U0001F1FA RU 186 | ⬇️ 8.10 MB/s"
+      port: 10469
+      ports: 10469
+      protocol: udp
+      server: 46.17.41.174
+      skip-cert-verify: true
+      sni: apple.com
+      type: hysteria
+      up: 80
+    - cipher: chacha20-ietf-poly1305
+      name: "\U0001F1EC\U0001F1E7 GB 187 | ⬇️ 10.42 MB/s"
+      password: 4f20786f016f5a7c
+      port: 15273
+      server: 198.244.149.246
+      type: ss
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: "\U0001F1EF\U0001F1F5 JP 200 | ⬇️ 31.29 MB/s"
+      network: tcp
+      port: 63134
+      reality-opts:
+        public-key: sJyLIpS_6XMDEDhIgr0Xq2yAI8LdUaktWyrUKIVMOSw
+      server: 156.246.89.131
+      servername: www.ebay.com
+      tls: true
       type: vless
-      uuid: 53fa8faf-ba4b-4322-9c69-a3e5b1555049
-      ws-opts:
-        headers:
-            Host: redw.pooriam.ir
-        path: /TM-AZARBAYJAB1TM-AZARBAYJAB1TM-AZARBAYJAB1
+      uuid: f212a7d3-7175-40bb-bba2-fde5668893e6
+    - name: "\U0001F1EF\U0001F1F5 JP 209 | ⬇️ 10.66 MB/s"
+      password: exaxgqkKkd0TAMrCxeonWg==
+      port: 443
+      server: jp104-cdn-route.couldflare-cdn.com
+      skip-cert-verify: false
+      sni: jp104-cdn-route.couldflare-cdn.com
+      tls: true
+      type: http
+      username: mrwdfNTD8M79LCukCieldrqZWqs=

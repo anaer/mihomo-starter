@@ -1,2 +1,5 @@
 proxies:
-  - {'name': 'linux2.do', 'type': 'vless', 'uuid': '4e999bcb-78e6-4491-812f-c35649f81deb', 'server': '67.230.166.240', 'port': 21499, 'udp': True, 'tls': True, 'tfo': False, 'skip-cert-verify': False, 'client-fingerprint': 'chrome', 'servername': 'yahoo.com', 'reality-opts': {'public-key': 'hKS0mCbYpZxV8-___Rukszp3lOqbpFkSwrZlGcJhKnA', 'short-id': '61632773c7'}, 'network': 'tcp'}
+  # - {'name': 'linux2.do', 'type': 'vless', 'uuid': '4e999bcb-78e6-4491-812f-c35649f81deb', 'server': '67.230.166.240', 'port': 21499, 'udp': True, 'tls': True, 'tfo': False, 'skip-cert-verify': False, 'client-fingerprint': 'chrome', 'servername': 'yahoo.com', 'reality-opts': {'public-key': 'hKS0mCbYpZxV8-___Rukszp3lOqbpFkSwrZlGcJhKnA', 'short-id': '61632773c7'}, 'network': 'tcp'}
+  - {'name': '😈英格兰001', 'type': 'hysteria2', 'password': 'd122166f-8e5d-47ff-9a4d-5752dd9deea4', 'server': 'uk-001.xiaoxiaobujidao.xyz', 'port': 443}
+  - {'name': '🖤东京京007', 'type': 'hysteria2', 'password': 'd122166f-8e5d-47ff-9a4d-5752dd9deea4', 'server': 'tk-007.xiaoxiaobujidao.xyz', 'port': 443}
+  - {'name': '🤎凤凰城002', 'type': 'hysteria2', 'password': 'd122166f-8e5d-47ff-9a4d-5752dd9deea4', 'server': 'px-002.xiaoxiaobujidao.xyz', 'port': 443}
