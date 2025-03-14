@@ -27,7 +27,7 @@ mihomo-server.exe start mihomo-server.xml
 mihomo-server.exe stop mihomo-server.xml
 ```
 
-## Mac服务 (待验证)
+## Mac服务
 
 ### 1. **创建 LaunchAgent 配置文件**
 在终端执行以下命令，创建 `~Library/LaunchAgents` 目录（如未存在）并生成配置文件：

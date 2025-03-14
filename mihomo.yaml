@@ -49,10 +49,10 @@ proxy-providers:
     <<: *hp
     url: "https://api.e687699.top/api/v1/client/subscribe?token=d51f623392f42a41accd2d889987e0cd"
     path: ./proxies/SUB4.yaml
-  SUB5:
-    <<: *hp
-    url: "https://45.137.181.197/api/v1/client/subscribe?token=57141b33b664412b3254cd69853edc57"
-    path: ./proxies/SUB5.yaml
+  # SUB5:
+  #   <<: *hp
+  #   url: "https://45.137.181.197/api/v1/client/subscribe?token=57141b33b664412b3254cd69853edc57"
+  #   path: ./proxies/SUB5.yaml
   SUB6:
     <<: *hp
     url: "https://api-hy.02000.net/api/v1/client/subscribe?token=c1e7a542d82991f1011d0235ab4cc33f"

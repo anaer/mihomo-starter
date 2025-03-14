@@ -16,7 +16,7 @@ dns:
     fallback-filter: { geoip: true, ipcidr: [240.0.0.0/4, 0.0.0.0/32] }
 proxies:
     - { name: '剩余流量：197.1 GB', server: mg.xjyjc.top, port: 36800, udp: true, skip-cert-verify: true, sni: mg.xjyjc.top, type: hysteria2, password: bde43381-78c1-4d2e-9794-6b4f8b155138 }
-    - { name: '距离下次重置剩余：18 天', server: mg.xjyjc.top, port: 36800, udp: true, skip-cert-verify: true, sni: mg.xjyjc.top, type: hysteria2, password: bde43381-78c1-4d2e-9794-6b4f8b155138 }
+    - { name: '距离下次重置剩余：17 天', server: mg.xjyjc.top, port: 36800, udp: true, skip-cert-verify: true, sni: mg.xjyjc.top, type: hysteria2, password: bde43381-78c1-4d2e-9794-6b4f8b155138 }
     - { name: 套餐到期：2025-03-21, server: mg.xjyjc.top, port: 36800, udp: true, skip-cert-verify: true, sni: mg.xjyjc.top, type: hysteria2, password: bde43381-78c1-4d2e-9794-6b4f8b155138 }
     - { name: 美国, server: mg.xjyjc.top, port: 36800, udp: true, skip-cert-verify: true, sni: mg.xjyjc.top, type: hysteria2, password: bde43381-78c1-4d2e-9794-6b4f8b155138 }
     - { name: 香港, server: xg.xjyjc.top, port: 36800, udp: true, skip-cert-verify: true, sni: xg.xjyjc.top, type: hysteria2, password: bde43381-78c1-4d2e-9794-6b4f8b155138 }
@@ -24,9 +24,9 @@ proxies:
     - { name: 新加坡, server: xjp.xjyjc.top, port: 36800, udp: true, skip-cert-verify: true, sni: xjp.xjyjc.top, type: hysteria2, password: bde43381-78c1-4d2e-9794-6b4f8b155138 }
     - { name: 日本, server: rb.xjyjc.top, port: 36800, udp: true, skip-cert-verify: true, sni: rb.xjyjc.top, type: hysteria2, password: bde43381-78c1-4d2e-9794-6b4f8b155138 }
 proxy-groups:
-    - { name: 小金鱼, type: select, proxies: [自动选择, 故障转移, '剩余流量：197.1 GB', '距离下次重置剩余：18 天', 套餐到期：2025-03-21, 美国, 香港, 德国, 新加坡, 日本] }
-    - { name: 自动选择, type: url-test, proxies: ['剩余流量：197.1 GB', '距离下次重置剩余：18 天', 套餐到期：2025-03-21, 美国, 香港, 德国, 新加坡, 日本], url: 'http://www.gstatic.com/generate_204', interval: 86400 }
-    - { name: 故障转移, type: fallback, proxies: ['剩余流量：197.1 GB', '距离下次重置剩余：18 天', 套餐到期：2025-03-21, 美国, 香港, 德国, 新加坡, 日本], url: 'http://www.gstatic.com/generate_204', interval: 7200 }
+    - { name: 小金鱼, type: select, proxies: [自动选择, 故障转移, '剩余流量：197.1 GB', '距离下次重置剩余：17 天', 套餐到期：2025-03-21, 美国, 香港, 德国, 新加坡, 日本] }
+    - { name: 自动选择, type: url-test, proxies: ['剩余流量：197.1 GB', '距离下次重置剩余：17 天', 套餐到期：2025-03-21, 美国, 香港, 德国, 新加坡, 日本], url: 'http://www.gstatic.com/generate_204', interval: 86400 }
+    - { name: 故障转移, type: fallback, proxies: ['剩余流量：197.1 GB', '距离下次重置剩余：17 天', 套餐到期：2025-03-21, 美国, 香港, 德国, 新加坡, 日本], url: 'http://www.gstatic.com/generate_204', interval: 7200 }
 rules:
     - 'DOMAIN-SUFFIX,services.googleapis.cn,小金鱼'
     - 'DOMAIN-SUFFIX,xn--ngstr-lra8j.com,小金鱼'
